@@ -1,0 +1,45 @@
+# ========================================
+# 공통 무시 항목 (OS, 편집기 등)
+# ========================================
+.DS_Store
+Thumbs.db
+*~
+*.log
+*.bak
+*.swp
+.vscode/
+.cursor/
+
+# ========================================
+# Java 관련 무시 항목
+# ========================================
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+
+hs_err_pid*
+replay_pid*
+*.ctxt
+.mtj.tmp/
+
+target/
+.gradle/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+.metadata/
+
