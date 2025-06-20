@@ -51,6 +51,7 @@ public class CrushedRock implements SalesCalcs {
 		// Create CrushedRock objects
 		CrushedRock rock1 = new CrushedRock(12, 10, 50); // Direct instance
 		SalesCalcs rock2 = new CrushedRock(12, 10, 50); // Interface reference
+		
 		// Print the calculated sales prices
 		System.out.println("Sales Price (rock1): $" + rock1.calcSalesPrice());
 		System.out.println("Sales Price (rock2): $" + rock2.calcSalesPrice());
