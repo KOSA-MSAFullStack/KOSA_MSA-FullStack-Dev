@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-public class Strams_Map {
+public class Streams_Map {
 	// Driver code
 	public static void main(String[] args) {
 		System.out.println("The stream after applying the function is : ");
