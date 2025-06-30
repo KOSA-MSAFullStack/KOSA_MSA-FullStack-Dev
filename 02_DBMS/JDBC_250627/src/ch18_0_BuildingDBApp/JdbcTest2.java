@@ -19,7 +19,8 @@ public class JdbcTest2 {
 	public static void main(String[] args) {
 	
 		// 오라클 드라이버와 URL 정보
-		Connection conn = null;		
+		Connection conn = null;
+		
 		final String driver="oracle.jdbc.driver.OracleDriver";			// ojdbc8.jar 파일이 제대로 로드되었는지 확인
 		final String url="jdbc:oracle:thin:@localhost:1521/xepdb1";		// DB 정보(DB위치 및 이름) 맞는지 확인
 		
@@ -34,8 +35,8 @@ public class JdbcTest2 {
 		} catch (Exception e) {
 			System.out.println("oracle 연결 실패!!");
 			e.printStackTrace();
-		} // end try
-	}// end main
-}// end class
+		}
+	}
+}
 
 

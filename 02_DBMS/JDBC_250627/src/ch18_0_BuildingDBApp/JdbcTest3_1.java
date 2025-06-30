@@ -54,7 +54,7 @@ public class JdbcTest3_1 {
 		} catch (Exception e) {
 			System.out.println("DB 연결에 문제가 있습니다.");
 			e.printStackTrace();
-		} // end try
-	}// end mami
-}// end class
+		}
+	}
+}
 
