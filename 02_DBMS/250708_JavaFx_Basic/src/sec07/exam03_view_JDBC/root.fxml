@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="sec07.exam03_view_JDBC.RootController">
+    <children>
+        <TableView fx:id="tableView" layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0">
+            <columns>
+                <TableColumn fx:id="colDeptId" text="Department ID" prefWidth="100"/>
+                <TableColumn fx:id="colDeptName" text="Department Name" prefWidth="200"/>
+                <TableColumn fx:id="colManagerId" text="Manager ID" prefWidth="100"/>
+                <TableColumn fx:id="colLocationId" text="Location ID" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml">
+   <children>
+   <!--  가로비와 세로비 상관없이 고정길이로 설정-->
+      <ImageView fitWidth="500"  fitHeight="300" >
+         <image>
+            <Image url="@images/snow.jpg" />
+         </image>
+      </ImageView>
+      <!-- preserveRatio 가로비와 세로비 유지 -->
+      <ImageView preserveRatio="true">
+         <image>
+            <Image url="@images/duke.gif" />
+         </image>
+      </ImageView>      
+   </children>
+</StackPane>

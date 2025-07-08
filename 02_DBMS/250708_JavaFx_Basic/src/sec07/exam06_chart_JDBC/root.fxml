@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" xmlns:fx="http://javafx.com/fxml" fx:controller="sec07.exam06_chart_JDBC.RootController">
+    <children>
+        <BarChart fx:id="barChart" layoutX="10" layoutY="10" prefHeight="400" prefWidth="600">
+            <xAxis>
+                <CategoryAxis fx:id="xAxis" label="Manager ID"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis fx:id="yAxis" label="Average Salary"/>
+            </yAxis>
+        </BarChart>
+    </children>
+</AnchorPane>
