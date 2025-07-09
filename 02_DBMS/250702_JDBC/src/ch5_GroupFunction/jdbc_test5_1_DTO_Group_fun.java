@@ -26,7 +26,7 @@ public class jdbc_test5_1_DTO_Group_fun {
 
 		try {
 			// JDBC 드라이버 로드
-			Class.forName(driver);
+			Class.forName(driver); 
 
 			// 데이터베이스에 연결
 			Connection con = DriverManager.getConnection(url, uid, pwd);

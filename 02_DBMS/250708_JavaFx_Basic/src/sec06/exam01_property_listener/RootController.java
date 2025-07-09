@@ -19,14 +19,12 @@ public class RootController implements Initializable {
 	//속성 감시 기본 자바 구문
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		slider.valueProperty().addListener(
-				new ChangeListener<Number>() {
+		slider.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(
-					ObservableValue<? extends Number> observable
-					, Number oldValue, Number newValue) {
-				//라벨의 폰트를 Slider 의 변경된 Values
-				label.setFont(new Font(newValue.doubleValue()));
+				ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+					//라벨의 폰트를 Slider 의 변경된 Values
+					label.setFont(new Font(newValue.doubleValue()));
 				} //end observable
 			}//end ChangeListener
 		);//end addListener
