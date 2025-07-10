@@ -91,6 +91,7 @@ public class RootController implements Initializable {
 	}//end initialize
 	
 	//버튼 클릭 이벤트 함수
+	@FXML
 	public void handleBtnOkAction(ActionEvent e) {
 		String item = listView.getSelectionModel().getSelectedItem();
 		System.out.println("ListView 스마트폰: " + item);

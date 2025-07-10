@@ -25,6 +25,7 @@ public class RootController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 	
+	@ FXML
 	public void handleBtnRegAction(ActionEvent e) {
 		String title = txtTitle.getText();
 		System.out.println("title: " + title);

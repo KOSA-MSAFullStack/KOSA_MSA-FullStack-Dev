@@ -44,6 +44,7 @@ public class RootController implements Initializable {
 	
 	
 	//CheckBox 이벤트 처리
+	@FXML
 	public void handleChkAction(ActionEvent e) {
 		if(chk1.isSelected() && chk2.isSelected()) {
 			checkImageView.setImage(
