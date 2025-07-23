@@ -110,6 +110,7 @@
   - JDBC (ojdbc 8)
   - Lombok (1.18.38)
 - __DB__:  OracleDB (xepdb1)
+- Tool : SQL Developer
 - __Communication__ : Notion, Figma, ERD-Cloud
 
 ### Code Convention
