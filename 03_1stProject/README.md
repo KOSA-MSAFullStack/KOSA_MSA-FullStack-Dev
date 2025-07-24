@@ -111,7 +111,7 @@
   - Lombok (1.18.38)
 - __DB__:  OracleDB (xepdb1)
 - Tool : SQL Developer
-- __Communication__ : Notion, Figma, ERD-Cloud
+- __Communication__ : Notion, Figma, ERD-Cloud, Miri Canvas
 
 ### Code Convention
 1. interface 보단 type 쓰기
