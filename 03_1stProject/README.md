@@ -492,164 +492,196 @@ __`해결`__
 <hr noshade>
 
 ```
-📦KOSA_Team_Bread
- ┗ 📂Team_Bread
- ┃ ┣ 📂bin
- ┃ ┃ ┣ 📂application
- ┃ ┃ ┃ ┗ 📜Main.class
- ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┣ 📂couponCtrl
- ┃ ┃ ┃ ┃ ┣ 📜CouponApplyPopupController.class
- ┃ ┃ ┃ ┃ ┣ 📜CouponController$1.class
- ┃ ┃ ┃ ┃ ┗ 📜CouponController.class
+📦Team_Bread
+ ┣ 📂bin
+ ┃ ┣ 📂application
+ ┃ ┃ ┗ 📜Main.class
+ ┃ ┣ 📂controller
+ ┃ ┃ ┣ 📂coupon
+ ┃ ┃ ┃ ┣ 📜CouponApplyPopupController.class
+ ┃ ┃ ┃ ┣ 📜CouponController$1.class
+ ┃ ┃ ┃ ┣ 📜CouponController.class
+ ┃ ┃ ┃ ┗ 📜CouponEditPopupController.class
+ ┃ ┃ ┣ 📂inout
  ┃ ┃ ┃ ┣ 📜InoutController.class
- ┃ ┃ ┃ ┣ 📜MainController.class
+ ┃ ┃ ┃ ┗ 📜InoutCreateController.class
+ ┃ ┃ ┣ 📂main
+ ┃ ┃ ┃ ┗ 📜MainController.class
+ ┃ ┃ ┣ 📂mypage
  ┃ ┃ ┃ ┣ 📜MyPageController$1.class
  ┃ ┃ ┃ ┣ 📜MyPageController.class
+ ┃ ┃ ┃ ┣ 📜ProfileEditController.class
+ ┃ ┃ ┃ ┗ 📜RoleEditController.class
+ ┃ ┃ ┣ 📂sign
+ ┃ ┃ ┃ ┣ 📜LoginController.class
+ ┃ ┃ ┃ ┣ 📜SignUpController$1.class
+ ┃ ┃ ┃ ┣ 📜SignUpController$2.class
+ ┃ ┃ ┃ ┗ 📜SignUpController.class
+ ┃ ┃ ┗ 📂stock
  ┃ ┃ ┃ ┣ 📜ProductAddPopupController.class
  ┃ ┃ ┃ ┣ 📜ProductDetailPopupController.class
- ┃ ┃ ┃ ┣ 📜ProfileEditController.class
- ┃ ┃ ┃ ┣ 📜RoleEditController.class
- ┃ ┃ ┃ ┣ 📜SignupController.class
  ┃ ┃ ┃ ┗ 📜StockController.class
- ┃ ┃ ┣ 📂model
- ┃ ┃ ┃ ┣ 📂admin
- ┃ ┃ ┃ ┃ ┣ 📜Admin$AdminBuilder.class
- ┃ ┃ ┃ ┃ ┣ 📜Admin.class
- ┃ ┃ ┃ ┃ ┣ 📜AdminDAO.class
- ┃ ┃ ┃ ┃ ┗ 📜Grade.class
- ┃ ┃ ┃ ┣ 📂category
- ┃ ┃ ┃ ┃ ┣ 📜Category$CategoryBuilder.class
- ┃ ┃ ┃ ┃ ┣ 📜Category.class
- ┃ ┃ ┃ ┃ ┗ 📜CategoryDAO.class
- ┃ ┃ ┃ ┣ 📂coupon
- ┃ ┃ ┃ ┃ ┣ 📜Coupon$CouponBuilder.class
- ┃ ┃ ┃ ┃ ┣ 📜Coupon.class
- ┃ ┃ ┃ ┃ ┗ 📜CouponDAO.class
- ┃ ┃ ┃ ┣ 📂image
- ┃ ┃ ┃ ┃ ┣ 📜Image$ImageBuilder.class
- ┃ ┃ ┃ ┃ ┣ 📜Image.class
- ┃ ┃ ┃ ┃ ┣ 📜ImageDAO.class
- ┃ ┃ ┃ ┃ ┗ 📜ImageDto.class
- ┃ ┃ ┃ ┣ 📂inout
- ┃ ┃ ┃ ┃ ┣ 📜Inout$InoutBuilder.class
- ┃ ┃ ┃ ┃ ┣ 📜Inout.class
- ┃ ┃ ┃ ┃ ┣ 📜InoutDAO.class
- ┃ ┃ ┃ ┃ ┣ 📜InoutInsertDto$InoutInsertDtoBuilder.class
- ┃ ┃ ┃ ┃ ┣ 📜InoutInsertDto.class
- ┃ ┃ ┃ ┃ ┣ 📜inoutSelectDto$inoutSelectDtoBuilder.class
- ┃ ┃ ┃ ┃ ┗ 📜inoutSelectDto.class
- ┃ ┃ ┃ ┣ 📂product
- ┃ ┃ ┃ ┃ ┣ 📜Product$ProductBuilder.class
- ┃ ┃ ┃ ┃ ┣ 📜Product.class
- ┃ ┃ ┃ ┃ ┣ 📜ProductDAO.class
- ┃ ┃ ┃ ┃ ┣ 📜ProductDetailSelectDto$ProductDetailSelectDtoBuilder.class
- ┃ ┃ ┃ ┃ ┣ 📜ProductDetailSelectDto.class
- ┃ ┃ ┃ ┃ ┣ 📜ProductInsertDto$ProductInsertDtoBuilder.class
- ┃ ┃ ┃ ┃ ┗ 📜ProductInsertDto.class
- ┃ ┃ ┃ ┗ 📂stock
- ┃ ┃ ┃ ┃ ┣ 📜Stock$StockBuilder.class
- ┃ ┃ ┃ ┃ ┣ 📜Stock.class
- ┃ ┃ ┃ ┃ ┗ 📜StockDAO.class
- ┃ ┃ ┣ 📂util
- ┃ ┃ ┃ ┣ 📜AlertUtil.class
- ┃ ┃ ┃ ┣ 📜BreadSQL.txt
- ┃ ┃ ┃ ┣ 📜DBUtil.class
- ┃ ┃ ┃ ┣ 📜Session$SessionBuilder.class
- ┃ ┃ ┃ ┗ 📜Session.class
- ┃ ┃ ┗ 📂view
- ┃ ┃ ┃ ┣ 📂coupon
- ┃ ┃ ┃ ┃ ┣ 📜CouponApplyPopup.fxml
- ┃ ┃ ┃ ┃ ┣ 📜CouponManagement.fxml
- ┃ ┃ ┃ ┃ ┗ 📜CouponPopup.css
- ┃ ┃ ┃ ┣ 📂inout
- ┃ ┃ ┃ ┃ ┗ 📜Inout.fxml
- ┃ ┃ ┃ ┣ 📂main
- ┃ ┃ ┃ ┃ ┣ 📜logo.png
- ┃ ┃ ┃ ┃ ┗ 📜MainPage.fxml
- ┃ ┃ ┃ ┣ 📂mypage
- ┃ ┃ ┃ ┃ ┗ 📜Mypage.fxml
- ┃ ┃ ┃ ┣ 📂profileEdit
- ┃ ┃ ┃ ┃ ┣ 📜profileEdit.fxml
- ┃ ┃ ┃ ┃ ┗ 📜roleEdit.fxml
- ┃ ┃ ┃ ┣ 📂stock
- ┃ ┃ ┃ ┃ ┣ 📜ProductAddPopup.fxml
- ┃ ┃ ┃ ┃ ┣ 📜ProductDetailPopup.fxml
- ┃ ┃ ┃ ┃ ┗ 📜Stock.fxml
- ┃ ┃ ┃ ┣ 📜account.fxml
+ ┃ ┣ 📂model
+ ┃ ┃ ┣ 📂admin
+ ┃ ┃ ┃ ┣ 📜Admin$AdminBuilder.class
+ ┃ ┃ ┃ ┣ 📜Admin.class
+ ┃ ┃ ┃ ┣ 📜AdminDAO.class
+ ┃ ┃ ┃ ┗ 📜Grade.class
+ ┃ ┃ ┣ 📂category
+ ┃ ┃ ┃ ┣ 📜Category$CategoryBuilder.class
+ ┃ ┃ ┃ ┣ 📜Category.class
+ ┃ ┃ ┃ ┗ 📜CategoryDAO.class
+ ┃ ┃ ┣ 📂coupon
+ ┃ ┃ ┃ ┣ 📜Coupon$CouponBuilder.class
+ ┃ ┃ ┃ ┣ 📜Coupon.class
+ ┃ ┃ ┃ ┣ 📜CouponDAO.class
+ ┃ ┃ ┃ ┣ 📜CouponDTO_Add$CouponDTO_AddBuilder.class
+ ┃ ┃ ┃ ┣ 📜CouponDTO_Add.class
+ ┃ ┃ ┃ ┣ 📜CouponDTO_Update$CouponDTO_UpdateBuilder.class
+ ┃ ┃ ┃ ┗ 📜CouponDTO_Update.class
+ ┃ ┃ ┣ 📂image
+ ┃ ┃ ┃ ┣ 📜Image$ImageBuilder.class
+ ┃ ┃ ┃ ┣ 📜Image.class
+ ┃ ┃ ┃ ┣ 📜ImageDAO.class
+ ┃ ┃ ┃ ┗ 📜ImageDto.class
+ ┃ ┃ ┣ 📂inout
+ ┃ ┃ ┃ ┣ 📜Inout$InoutBuilder.class
+ ┃ ┃ ┃ ┣ 📜Inout.class
+ ┃ ┃ ┃ ┣ 📜InoutDAO.class
+ ┃ ┃ ┃ ┣ 📜InoutInsertDto$InoutInsertDtoBuilder.class
+ ┃ ┃ ┃ ┣ 📜InoutInsertDto.class
+ ┃ ┃ ┃ ┣ 📜inoutSelectDto$inoutSelectDtoBuilder.class
+ ┃ ┃ ┃ ┗ 📜inoutSelectDto.class
+ ┃ ┃ ┣ 📂product
+ ┃ ┃ ┃ ┣ 📜Product$ProductBuilder.class
+ ┃ ┃ ┃ ┣ 📜Product.class
+ ┃ ┃ ┃ ┣ 📜ProductDAO.class
+ ┃ ┃ ┃ ┣ 📜ProductDetailSelectDto$ProductDetailSelectDtoBuilder.class
+ ┃ ┃ ┃ ┣ 📜ProductDetailSelectDto.class
+ ┃ ┃ ┃ ┣ 📜ProductInsertDto$ProductInsertDtoBuilder.class
+ ┃ ┃ ┃ ┗ 📜ProductInsertDto.class
+ ┃ ┃ ┗ 📂stock
+ ┃ ┃ ┃ ┣ 📜Stock$StockBuilder.class
+ ┃ ┃ ┃ ┣ 📜Stock.class
+ ┃ ┃ ┃ ┗ 📜StockDAO.class
+ ┃ ┣ 📂util
+ ┃ ┃ ┣ 📜AlertUtil.class
+ ┃ ┃ ┣ 📜BreadSQL.txt
+ ┃ ┃ ┣ 📜DBUtil.class
+ ┃ ┃ ┣ 📜Session$SessionBuilder.class
+ ┃ ┃ ┣ 📜Session.class
+ ┃ ┃ ┗ 📜ValidationUtil.class
+ ┃ ┗ 📂view
+ ┃ ┃ ┣ 📂coupon
+ ┃ ┃ ┃ ┣ 📜CouponApplyPopup.fxml
+ ┃ ┃ ┃ ┣ 📜CouponEditPopup.fxml
+ ┃ ┃ ┃ ┗ 📜CouponManagement.fxml
+ ┃ ┃ ┣ 📂inout
+ ┃ ┃ ┃ ┣ 📜Inout.fxml
+ ┃ ┃ ┃ ┗ 📜InoutCreate.fxml
+ ┃ ┃ ┣ 📂main
+ ┃ ┃ ┃ ┣ 📜logo.png
+ ┃ ┃ ┃ ┗ 📜MainPage.fxml
+ ┃ ┃ ┣ 📂mypage
+ ┃ ┃ ┃ ┗ 📜Mypage.fxml
+ ┃ ┃ ┣ 📂profileEdit
+ ┃ ┃ ┃ ┣ 📜profileEdit.fxml
+ ┃ ┃ ┃ ┗ 📜roleEdit.fxml
+ ┃ ┃ ┣ 📂sign
  ┃ ┃ ┃ ┣ 📜login.fxml
- ┃ ┃ ┃ ┗ 📜Style.css
- ┃ ┗ 📂src
- ┃ ┃ ┣ 📂application
- ┃ ┃ ┃ ┗ 📜Main.java
- ┃ ┃ ┣ 📂controller
- ┃ ┃ ┃ ┣ 📂couponCtrl
- ┃ ┃ ┃ ┃ ┣ 📜CouponApplyPopupController.java
- ┃ ┃ ┃ ┃ ┗ 📜CouponController.java
+ ┃ ┃ ┃ ┗ 📜signup.fxml
+ ┃ ┃ ┣ 📂stock
+ ┃ ┃ ┃ ┣ 📜ProductAddPopup.fxml
+ ┃ ┃ ┃ ┣ 📜ProductDetailPopup.fxml
+ ┃ ┃ ┃ ┗ 📜Stock.fxml
+ ┃ ┃ ┗ 📜Style.css
+ ┣ 📂lib
+ ┃ ┣ 📜lombok-1.18.38.jar
+ ┃ ┗ 📜ojdbc8.jar
+ ┗ 📂src
+ ┃ ┣ 📂application
+ ┃ ┃ ┗ 📜Main.java
+ ┃ ┣ 📂controller
+ ┃ ┃ ┣ 📂coupon
+ ┃ ┃ ┃ ┣ 📜CouponApplyPopupController.java
+ ┃ ┃ ┃ ┣ 📜CouponController.java
+ ┃ ┃ ┃ ┗ 📜CouponEditPopupController.java
+ ┃ ┃ ┣ 📂inout
  ┃ ┃ ┃ ┣ 📜InoutController.java
- ┃ ┃ ┃ ┣ 📜MainController.java
+ ┃ ┃ ┃ ┗ 📜InoutCreateController.java
+ ┃ ┃ ┣ 📂main
+ ┃ ┃ ┃ ┗ 📜MainController.java
+ ┃ ┃ ┣ 📂mypage
  ┃ ┃ ┃ ┣ 📜MyPageController.java
+ ┃ ┃ ┃ ┣ 📜ProfileEditController.java
+ ┃ ┃ ┃ ┗ 📜RoleEditController.java
+ ┃ ┃ ┣ 📂sign
+ ┃ ┃ ┃ ┣ 📜LoginController.java
+ ┃ ┃ ┃ ┗ 📜SignUpController.java
+ ┃ ┃ ┗ 📂stock
  ┃ ┃ ┃ ┣ 📜ProductAddPopupController.java
  ┃ ┃ ┃ ┣ 📜ProductDetailPopupController.java
- ┃ ┃ ┃ ┣ 📜ProfileEditController.java
- ┃ ┃ ┃ ┣ 📜RoleEditController.java
- ┃ ┃ ┃ ┣ 📜SignupController.java
  ┃ ┃ ┃ ┗ 📜StockController.java
- ┃ ┃ ┣ 📂model
- ┃ ┃ ┃ ┣ 📂admin
- ┃ ┃ ┃ ┃ ┣ 📜Admin.java
- ┃ ┃ ┃ ┃ ┣ 📜AdminDAO.java
- ┃ ┃ ┃ ┃ ┗ 📜Grade.java
- ┃ ┃ ┃ ┣ 📂category
- ┃ ┃ ┃ ┃ ┣ 📜Category.java
- ┃ ┃ ┃ ┃ ┗ 📜CategoryDAO.java
- ┃ ┃ ┃ ┣ 📂coupon
- ┃ ┃ ┃ ┃ ┣ 📜Coupon.java
- ┃ ┃ ┃ ┃ ┗ 📜CouponDAO.java
- ┃ ┃ ┃ ┣ 📂image
- ┃ ┃ ┃ ┃ ┣ 📜Image.java
- ┃ ┃ ┃ ┃ ┣ 📜ImageDAO.java
- ┃ ┃ ┃ ┃ ┗ 📜ImageDto.java
- ┃ ┃ ┃ ┣ 📂inout
- ┃ ┃ ┃ ┃ ┣ 📜Inout.java
- ┃ ┃ ┃ ┃ ┣ 📜InoutDAO.java
- ┃ ┃ ┃ ┃ ┣ 📜InoutInsertDto.java
- ┃ ┃ ┃ ┃ ┗ 📜inoutSelectDto.java
- ┃ ┃ ┃ ┣ 📂product
- ┃ ┃ ┃ ┃ ┣ 📜Product.java
- ┃ ┃ ┃ ┃ ┣ 📜ProductDAO.java
- ┃ ┃ ┃ ┃ ┣ 📜ProductDetailSelectDto.java
- ┃ ┃ ┃ ┃ ┗ 📜ProductInsertDto.java
- ┃ ┃ ┃ ┗ 📂stock
- ┃ ┃ ┃ ┃ ┣ 📜Stock.java
- ┃ ┃ ┃ ┃ ┗ 📜StockDAO.java
- ┃ ┃ ┣ 📂util
- ┃ ┃ ┃ ┣ 📜AlertUtil.java
- ┃ ┃ ┃ ┣ 📜BreadSQL.txt
- ┃ ┃ ┃ ┣ 📜DBUtil.java
- ┃ ┃ ┃ ┗ 📜Session.java
- ┃ ┃ ┗ 📂view
- ┃ ┃ ┃ ┣ 📂coupon
- ┃ ┃ ┃ ┃ ┣ 📜CouponApplyPopup.fxml
- ┃ ┃ ┃ ┃ ┣ 📜CouponManagement.fxml
- ┃ ┃ ┃ ┃ ┗ 📜CouponPopup.css
- ┃ ┃ ┃ ┣ 📂inout
- ┃ ┃ ┃ ┃ ┗ 📜Inout.fxml
- ┃ ┃ ┃ ┣ 📂main
- ┃ ┃ ┃ ┃ ┣ 📜logo.png
- ┃ ┃ ┃ ┃ ┗ 📜MainPage.fxml
- ┃ ┃ ┃ ┣ 📂mypage
- ┃ ┃ ┃ ┃ ┗ 📜Mypage.fxml
- ┃ ┃ ┃ ┣ 📂profileEdit
- ┃ ┃ ┃ ┃ ┣ 📜profileEdit.fxml
- ┃ ┃ ┃ ┃ ┗ 📜roleEdit.fxml
- ┃ ┃ ┃ ┣ 📂stock
- ┃ ┃ ┃ ┃ ┣ 📜ProductAddPopup.fxml
- ┃ ┃ ┃ ┃ ┣ 📜ProductDetailPopup.fxml
- ┃ ┃ ┃ ┃ ┗ 📜Stock.fxml
- ┃ ┃ ┃ ┣ 📜account.fxml
+ ┃ ┣ 📂model
+ ┃ ┃ ┣ 📂admin
+ ┃ ┃ ┃ ┣ 📜Admin.java
+ ┃ ┃ ┃ ┣ 📜AdminDAO.java
+ ┃ ┃ ┃ ┗ 📜Grade.java
+ ┃ ┃ ┣ 📂category
+ ┃ ┃ ┃ ┣ 📜Category.java
+ ┃ ┃ ┃ ┗ 📜CategoryDAO.java
+ ┃ ┃ ┣ 📂coupon
+ ┃ ┃ ┃ ┣ 📜Coupon.java
+ ┃ ┃ ┃ ┣ 📜CouponDAO.java
+ ┃ ┃ ┃ ┣ 📜CouponDTO_Add.java
+ ┃ ┃ ┃ ┗ 📜CouponDTO_Update.java
+ ┃ ┃ ┣ 📂image
+ ┃ ┃ ┃ ┣ 📜Image.java
+ ┃ ┃ ┃ ┣ 📜ImageDAO.java
+ ┃ ┃ ┃ ┗ 📜ImageDto.java
+ ┃ ┃ ┣ 📂inout
+ ┃ ┃ ┃ ┣ 📜Inout.java
+ ┃ ┃ ┃ ┣ 📜InoutDAO.java
+ ┃ ┃ ┃ ┣ 📜InoutInsertDto.java
+ ┃ ┃ ┃ ┗ 📜inoutSelectDto.java
+ ┃ ┃ ┣ 📂product
+ ┃ ┃ ┃ ┣ 📜Product.java
+ ┃ ┃ ┃ ┣ 📜ProductDAO.java
+ ┃ ┃ ┃ ┣ 📜ProductDetailSelectDto.java
+ ┃ ┃ ┃ ┗ 📜ProductInsertDto.java
+ ┃ ┃ ┗ 📂stock
+ ┃ ┃ ┃ ┣ 📜Stock.java
+ ┃ ┃ ┃ ┗ 📜StockDAO.java
+ ┃ ┣ 📂util
+ ┃ ┃ ┣ 📜AlertUtil.java
+ ┃ ┃ ┣ 📜BreadSQL.txt
+ ┃ ┃ ┣ 📜DBUtil.java
+ ┃ ┃ ┣ 📜Session.java
+ ┃ ┃ ┗ 📜ValidationUtil.java
+ ┃ ┗ 📂view
+ ┃ ┃ ┣ 📂coupon
+ ┃ ┃ ┃ ┣ 📜CouponApplyPopup.fxml
+ ┃ ┃ ┃ ┣ 📜CouponEditPopup.fxml
+ ┃ ┃ ┃ ┗ 📜CouponManagement.fxml
+ ┃ ┃ ┣ 📂inout
+ ┃ ┃ ┃ ┣ 📜Inout.fxml
+ ┃ ┃ ┃ ┗ 📜InoutCreate.fxml
+ ┃ ┃ ┣ 📂main
+ ┃ ┃ ┃ ┣ 📜logo.png
+ ┃ ┃ ┃ ┗ 📜MainPage.fxml
+ ┃ ┃ ┣ 📂mypage
+ ┃ ┃ ┃ ┗ 📜Mypage.fxml
+ ┃ ┃ ┣ 📂profileEdit
+ ┃ ┃ ┃ ┣ 📜profileEdit.fxml
+ ┃ ┃ ┃ ┗ 📜roleEdit.fxml
+ ┃ ┃ ┣ 📂sign
  ┃ ┃ ┃ ┣ 📜login.fxml
- ┃ ┃ ┃ ┗ 📜Style.css
+ ┃ ┃ ┃ ┗ 📜signup.fxml
+ ┃ ┃ ┣ 📂stock
+ ┃ ┃ ┃ ┣ 📜ProductAddPopup.fxml
+ ┃ ┃ ┃ ┣ 📜ProductDetailPopup.fxml
+ ┃ ┃ ┃ ┗ 📜Stock.fxml
+ ┃ ┃ ┗ 📜Style.css
 ```
 
 <br>
