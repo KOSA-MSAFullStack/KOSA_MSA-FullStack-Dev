@@ -103,14 +103,13 @@
 <hr noshade>
 
 ### 개발 환경 (버전참고)
-- __Environment__ : Eclipse(2025-06), Visual Studio Code(2025-1.102), git(2.50.0), github
 - __Language__ :  Java (JDK 8)
 - __Framwork__ : JavaFX (3.8.0)
 - __Library__
   - JDBC (ojdbc 8)
   - Lombok (1.18.38)
 - __DB__:  OracleDB (xepdb1)
-- Tool : SQL Developer
+- __Tool__ : Eclipse(2025-06), SQL Developer (20.4.0.379), git(2.50.0), github
 - __Communication__ : Notion, Figma, ERD-Cloud, Miri Canvas
 
 ### Code Convention
