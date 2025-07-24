@@ -109,8 +109,8 @@
   - JDBC (ojdbc 8)
   - Lombok (1.18.38)
 - __DB__:  OracleDB (xepdb1)
-- __Tool__ : git(2.50.0), github, Eclipse(2025-06), SQL Developer(20.4.0.379)
-- __Communication__ : Notion, Figma, ERD-Cloud, Miri Canvas
+- __Tool__ : Eclipse(2025-06), SQL Developer(20.4.0.379)
+- __Communication__ : git(2.50.0), github, Notion, Figma, ERD-Cloud, Miri Canvas
 
 ### Code Convention
 1. interface 보단 type 쓰기
