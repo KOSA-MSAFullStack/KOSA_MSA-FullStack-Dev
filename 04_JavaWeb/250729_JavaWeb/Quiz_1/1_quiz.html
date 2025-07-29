@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>회원가입</title>
+  </head>
+
+  <body>
+    <h1>쇼핑몰 회원가입</h1>
+    <form action="/register" method="post" autocomplete="on">
+      <fieldset>
+        <legend>기본 정보</legend>
+
+        <label for="userid">아이디 (영문, 숫자 4~12자):</label>
+        <input
+          type="text"
+          id="userid"
+          name="userid"
+          required
+          pattern="^[A-Za-z][A-Za-z0-9]{3,11}$"
+          minlength="4"
+          maxlength="12"
+        />
+        <br /><br />
+
+        <label for="password">비밀번호 (8~16자, 숫자/문자 포함):</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          pattern="(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}"
+          minlength="8"
+          maxlength="16"
+        />
+        <br /><br />
+
+        <label for="name">이름 (한글 3~7자):</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          pattern="^[가-힣]{3,7}$"
+          minlength="3"
+          maxlength="7"
+        />
+        <br /><br />
+
+        <label for="birth">생년월일 (2010년생부터 가능):</label>
+        <input
+          type="date"
+          id="birth"
+          name="birth"
+          required
+          min="2010-01-01"
+          value="2010-01-01"
+        />
+        <br /><br />
+
+        <label>성별:</label>
+        <input type="radio" id="male" name="gender" value="M" required />
+        <label for="male">남성</label>
+        <input type="radio" id="female" name="gender" value="F" required />
+        <label for="female">여성</label>
+        <br /><br />
+      </fieldset>
+
+      <fieldset>
+        <legend>연락처 정보</legend>
+
+        <label for="email_id">이메일:</label>
+        <input
+          type="text"
+          id="email_id"
+          name="email_id"
+          required
+          placeholder="example"
+        />
+        @
+        <select id="email_domain" name="email_domain" required>
+          <option value="">-- 도메인 선택 --</option>
+          <option value="gmail.com">gmail.com</option>
+          <option value="naver.com">naver.com</option>
+          <option value="daum.net">daum.net</option>
+          <option value="hanmail.net">hanmail.net</option>
+          <option value="kakao.com">kakao.com</option>
+        </select>
+        <br /><br />
+
+        <label for="phone">휴대폰 번호 (010-xxxx-xxxx):</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          required
+          placeholder="010-1234-5678"
+        />
+        <br /><br />
+      </fieldset>
+
+      <fieldset>
+        <legend>약관 동의</legend>
+        <input type="checkbox" id="terms" name="terms" required />
+        <label for="terms">이용약관 및 개인정보 수집에 동의합니다.</label>
+        <br /><br />
+      </fieldset>
+
+      <input type="submit" value="회원가입" />
+      <input type="reset" value="초기화" />
+    </form>
+  </body>
+</html>
