@@ -1,3 +1,0 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1hajJK4zBP8U5dvqGSiAxkpLIuzAj87Y&callback=myMap">
-</script>
-<!-- 30일 가능 2017년3월8일 -->
