@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-<!--  CDN jQuery 복사해서 사용   -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-</script>
-<script>
-$(document).ready(function(){
-    $("#b1").click(function(){ //callback 사용
-        $("#p1").hide("slow", function(){
+  <head>
+    <!--  CDN jQuery 복사해서 사용   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+      //callback 함수 사용
+      $(document).ready(function () {
+        $("#b1").click(function () {
+          $("#p1").hide("slow", function () {
             alert("The paragraph is now hidden");
+          });
         });
-    }); //end click
-});//end ready
-$(document).ready(function(){ //callback 없이 사용
-    $("#b2").click(function(){
-        $("#p2").hide("slow");
-         alert("The paragraph is now hidden");
-    });//end click
-});//end ready
-</script>
-</head>
-<body>
-<button id="b1">Hide</button>
-<p id="p1">1 This is a paragraph with little content.</p>
-<button id="b2">Hide2</button>
-<p id="p2">2 This is a paragraph with little content.</p>
-</body>
+      });
+
+      //callback 함수 없이 사용
+      $(document).ready(function () {
+        $("#b2").click(function () {
+          $("#p2").hide("slow");
+          alert("The paragraph is now hidden");
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <button id="b1">Hide</button>
+    <p id="p1">1 This is a paragraph with little content.</p>
+    <button id="b2">Hide2</button>
+    <p id="p2">2 This is a paragraph with little content.</p>
+  </body>
 </html>
