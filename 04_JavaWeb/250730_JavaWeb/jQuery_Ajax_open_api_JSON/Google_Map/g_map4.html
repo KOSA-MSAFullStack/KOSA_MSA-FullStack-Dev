@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="map" style="width:100%;height:500px"></div>
+<script>
+function myMap() { //위도 경도
+  var myCenter = new google.maps.LatLng(51.508742,-0.120850);
+  var mapCanvas = document.getElementById("map"); //div 위치 설정
+  var mapOptions = { center: myCenter, zoom: 5 };  //확대비율
+  var map = new google.maps.Map(mapCanvas, mapOptions); //지도 생성
+  var marker = new google.maps.Marker( { position:myCenter } ); //마커 생성
+  marker.setMap(map); //지도에 마커표시
+  //마커 클릭시 할일 설정
+  google.maps.event.addListener(marker,'click',function() {
+    var pos = map.getZoom(); //전 확대 비율 저장 
+    map.setZoom(9); //확대 비율 조절
+    map.setCenter(marker.getPosition()); //중심 재 조정
+    //3초후 원상 복기
+    window.setTimeout( function() {map.setZoom(pos);} ,3000);
+  });
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1hajJK4zBP8U5dvqGSiAxkpLIuzAj87Y&callback=myMap">
+</script>
+<!-- 30일 가능 2021년10월8일 -->
+
+</body>
+</html>

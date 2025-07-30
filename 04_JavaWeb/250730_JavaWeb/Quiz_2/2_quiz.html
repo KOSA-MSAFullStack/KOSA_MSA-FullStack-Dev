@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>비밀번호 입력</title>
+    <style>
+      .message {
+        font-weight: bold;
+        margin-top: 5px;
+      }
+      .valid {
+        color: green;
+      }
+      .invalid {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>비밀번호 입력</h2>
+
+    <label for="password">비밀번호:</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      autocomplete="off"
+      required
+      minlength="8"
+      maxlength="16"
+    />
+    <button type="button" id="toggleBtn">비밀번호 보기</button>
+
+    <p id="pwMsg" class="message"></p>
+
+    <script>
+      const pwInput = document.getElementById("password");
+      const message = document.getElementById("pwMsg");
+      const toggleBtn = document.getElementById("toggleBtn");
+
+      const pwRegex =
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+
+      // 실시간 유효성 검사
+      pwInput.addEventListener("input", () => {
+        const value = pwInput.value;
+
+        if (pwRegex.test(value)) {
+          message.textContent = "유효한 비밀번호입니다.";
+          message.className = "message valid";
+        } else {
+          message.textContent =
+            "영문+숫자+특수문자를 포함하여 8자 이상 입력하세요.";
+          message.className = "message invalid";
+        }
+      });
+
+      // 비밀번호 보기/숨기기 토글
+      toggleBtn.addEventListener("click", () => {
+        const isPassword = pwInput.type === "password";
+        pwInput.type = isPassword ? "text" : "password";
+        toggleBtn.textContent = isPassword
+          ? "비밀번호 숨기기"
+          : "비밀번호 보기";
+      });
+    </script>
+  </body>
+</html>

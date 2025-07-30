@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+<record>
+    <id>1</id>
+    <first_name>Cleon</first_name>
+    <last_name>Norquoy</last_name>
+    <email>cnorquoy0@jugem.jp</email>
+    <gender>Male</gender>
+</record>
+<record>
+    <id>2</id>
+    <first_name>Danell</first_name>
+    <last_name>Hubble</last_name>
+    <email>dhubble1@amazon.co.jp</email>
+    <gender>Female</gender>
+</record>
+<record>
+    <id>3</id>
+    <first_name>Ronnie</first_name>
+    <last_name>Reily</last_name>
+    <email>rreily2@ucoz.ru</email>
+    <gender>Female</gender>
+</record>
+</dataset>

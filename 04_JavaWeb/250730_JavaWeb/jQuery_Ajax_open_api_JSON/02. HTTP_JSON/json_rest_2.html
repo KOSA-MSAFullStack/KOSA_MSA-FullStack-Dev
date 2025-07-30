@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상품 정보 가져오기</title>
+  
+</head>
+
+<body>
+  <div id="container">
+    <h1>상품 정보</h1>
+
+    <div id="result"></div>
+  </div>
+
+  <script >
+    //JSON 데이터 가져올 URL
+    const url = "https://reqres.in/api/products/10"
+    //DIV 태그 찾아서 할당
+    const result = document.querySelector("#result");
+
+    //AJAX 을 이용해서 데이터 가져오기 위한 준비
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true); //HTTP GET 사용
+    xhr.send(); //요청 보냄
+
+
+    //JSON 데이터 전달되면 실행되는 부분
+    xhr.onreadystatechange = function () {
+      //HTTP 상태 코드 확인
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        //JSON 데이터 JS로 가져오기
+        let product = JSON.parse(xhr.responseText);
+        //가져온 데이터 확인 차콘솔에 출력
+        console.log(product);
+        //div 태그에 내용 반영
+        result.innerHTML = `
+        <p>상품명 : ${product.data.name}</p>
+        <p>생산년도 : ${product.data.year}</p>
+        `;
+      }//end if
+    }//end func...
+  </script>
+</body>
+
+</html>

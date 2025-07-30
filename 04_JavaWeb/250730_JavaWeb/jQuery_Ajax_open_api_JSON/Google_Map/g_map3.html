@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<!-- 구글 지도 반환할 공간 설정 -->
+<div id="map" style="width:100%;height:500px"></div>
+<script>
+function myMap() {
+  var mapCanvas = document.getElementById("map"); //div태그
+  var myCenter = new google.maps.LatLng(51.508742,-0.120850); //위도 경도
+  var mapOptions = {center: myCenter, zoom: 5}; //경도,경도 , 확대비율
+  var map = new google.maps.Map(mapCanvas,mapOptions); //지도 생성
+  var marker = new google.maps.Marker({
+    position: myCenter, //마커 위치
+    animation: google.maps.Animation.BOUNCE //마커 종류
+  });   
+  marker.setMap(map); //지도에 마커 표시
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1hajJK4zBP8U5dvqGSiAxkpLIuzAj87Y&callback=myMap">
+</script>
+<!-- 30일 가능 2021년10월8일 -->
+</body>
+</html>

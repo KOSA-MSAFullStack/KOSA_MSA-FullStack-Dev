@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <script type="text/javascript" 
+    src="https://www.gstatic.com/charts/loader.js">
+    </script>
+  
+<body>
+    <!--간단한 테이블을 만들고 2개의 차트를 놓을 공간을 만든다.-->
+    <table class="columns">
+      <tr>
+        <td><div id="piechart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="barchart_div" style="border: 1px solid #ccc"></div></td>
+      </tr>
+    </table>
+    
+   <script type="text/javascript">
+       // 구글 오픈 API에서 차트 객체 로드
+      google.charts.load('current', {'packages':['corechart']});
+      // Google Visualization API  로드시 callback 사용할 콜백 함수 설정.
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+    	  // 이 함수에서 데이터 설정 및 2개의 차트를 그린다.      
+    	var data = new google.visualization.DataTable();
+        //열 설정 2개를 설정하고 데이터 타입, 열이름
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        //행 추가 5개의 행을 추가한다. 
+        data.addRows([
+          ['Mushrooms', 3],
+          ['Onions', 1],
+          ['Olives', 1],
+          ['Zucchini', 1],
+          ['Pepperoni', 2]
+        ]);
+        //파이 차트 옵션
+        var piechart_options = {title:'Pie Chart: How Much Pizza I Ate Last Night',
+                       width:400,
+                       height:300};
+        var piechart = 
+        	new google.visualization.PieChart(document.getElementById('piechart_div'));
+        //파이 차트 그르기 데이터, 옵션
+        piechart.draw(data, piechart_options);		
+        
+        //바 차트 옵션 설정
+        var barchart_options = {title:'Barchart: How Much Pizza I Ate Last Night',
+                       width:400,
+                       height:300,
+                       legend: 'none'};
+        //바 차트 생성 
+        var barchart = 
+        	new google.visualization.BarChart(document.getElementById('barchart_div'));
+        //바 차트 그리기 데이터, 옵션
+        //데이터는 재활용
+        barchart.draw(data, barchart_options);
+      } //drawChart() end
+</script> 
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--  CDN jQuery 복사해서 사용   -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+    $("p").on({ //on 메소드를 이용 이벤트 연결
+    	mouseenter: function(){
+            $(this).css("background-color", "lightgray");
+        	}//end mouseenter.. 
+        ,  
+        mouseleave: function(){
+            $(this).css("background-color", "lightblue");
+        	}//end mousel.. 
+        , 
+        click: function(){
+            $(this).css("background-color", "yellow");
+        	}//end click
+    });//end on
+});//end doc..ready
+</script>
+</head>
+<body>
+<p>Click or move the mouse pointer over this paragraph.</p>
+</body>
+</html>

@@ -1,0 +1,22 @@
+[
+  { "id" : 1 , "first_name" : "Marlow" , "last_name" : "Joul" ,
+    "email" : "mjoul0@google.com" ,
+   "gender" : "Male" 
+  }
+,
+  { "id":2 , "first_name" : "Sharron" , "last_name" : "Veryan" ,
+   "email" : "sveryan1@cnbc.com" ,  "gender" : "Female" 
+  }
+,
+  { "id" : 3 , "first_name" : "Tildie" , "last_name" : "Lasseter",
+    "email" : "tlasseter2@fda.gov" , "gender" : "Female" 
+  }
+,
+  { "id" : 4 , "first_name" : "Haywood" , "last_name" : "Foulger",
+  "email" : "hfoulger3@soup.io" , "gender" : "Male" 
+  }
+,
+  { "id" : 5 , "first_name" : "Alvin" , "last_name" : "Rochelle" 
+    , "email" : "arochelle4@cmu.edu" , "gender" : "Male"
+  }
+]

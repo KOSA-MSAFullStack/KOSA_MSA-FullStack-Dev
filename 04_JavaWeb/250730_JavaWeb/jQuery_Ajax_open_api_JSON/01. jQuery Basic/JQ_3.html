@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--  CDN jQuery 복사해서 사용   -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+    $("input").focus(function(){
+        $(this).css("background-color", "#cccccc");
+    });//end input..fo
+    $("input").blur(function(){
+        $(this).css("background-color", "#ffffff");
+    });//end input..fo
+}); //end doc..read
+</script>
+</head>
+<body>
+Name: <input type="text" name="fullname"><br>
+Email: <input type="text" name="email">
+</body>
+</html>

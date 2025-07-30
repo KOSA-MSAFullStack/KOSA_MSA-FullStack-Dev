@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ID 셀렉터 연습2</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript"> 
+ function addHtml(){
+   //id가 article 인 태그를 찾아서 html 메서드의 인자값을
+   //태그에 설정 
+	 $("#article").html('안녕하세요'+'<br>');
+	 
+ }//end func
+</script>
+</head>
+<body>
+  <div>
+     <p id="article"></p>
+  </div>
+  <!-- 버튼 클릭시 함수 호출 -->
+  <input type="button" value="추가하기"  onClick="addHtml()"  />
+</body>
+</html>
+

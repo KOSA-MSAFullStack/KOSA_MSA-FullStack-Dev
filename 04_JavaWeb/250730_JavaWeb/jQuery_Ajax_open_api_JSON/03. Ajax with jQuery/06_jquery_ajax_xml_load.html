@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> Ajax </title>
+<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+
+<script>
+$(document).ready(function () {
+	$.ajax({
+		url:"dataset.xml", //데이터 위치
+		dataType:"xml",  //데이터 종류
+		success:function(data) {  //데이터 로드 성공
+			console.log(data);
+			var data = $(data).find("record"); //태그 찾기
+			console.log(data); 
+			if(data.length > 0) { //한개 이상의 요소가 존재하면
+				var tb = $("<table />");
+				//https://api.jquery.com/each/
+				$.each(data, function( i,o) { //인덱스와 요소
+					var id = 	$(o).find("id").text(); //각 요소 추출
+					var first_name = $(o).find("first_name").text();
+					var last_name = $(o).find("last_name").text();
+					var email = $(o).find("email").text();
+					var gender = $(o).find("gender").text();
+
+					var row = $("<tr />").append( //행 만들기
+						$("<td />").text(id),
+						$("<td />").text(first_name),
+						$("<td />").text(last_name),
+						$("<td />").text(email),
+						$("<td />").text(gender)
+					);//end appen
+					tb.append(row); //행 추가
+				});//end each
+				$(".wrap").append(tb);
+			}//end if
+		}//end suess..
+	});//end ajax
+});//end doc..
+</script>
+</head>
+<body>
+	<div class="wrap"></div>
+</body>
+</html>

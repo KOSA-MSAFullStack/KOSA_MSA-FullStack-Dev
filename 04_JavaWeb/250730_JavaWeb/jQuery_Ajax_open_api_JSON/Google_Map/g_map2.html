@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+<!-- 구글 지도 반환할 공간 설정  4개 생성-->
+<div id="Map1" style="width:400px;height:300px;"></div>
+<br>
+<div id="Map2" style="width:400px;height:300px;"></div>
+<br>
+<div id="Map3" style="width:400px;height:300px;"></div>
+<br>
+<div id="Map4" style="width:400px;height:300px;"></div>
+
+<script>
+function myMap() {
+  var map1 = {
+    center: new google.maps.LatLng(51.508742,-0.120850), //위도 경도
+    zoom:9, //확대 비율
+    mapTypeId: google.maps.MapTypeId.ROADMAP //지도 종류
+  }; //1번재 지도 생성
+  var map2 = {
+    center: new google.maps.LatLng(51.508742,-0.120850),
+    zoom:9,
+    mapTypeId: google.maps.MapTypeId.SATELLITE
+  };
+  var map3 = {
+    center: new google.maps.LatLng(51.508742,-0.120850),
+    zoom:9,
+    mapTypeId: google.maps.MapTypeId.HYBRID
+  };
+  var map4 = {
+    center: new google.maps.LatLng(37.498105,127.027253), //강남 위도 경도
+    zoom:14, //확대 비율
+    mapTypeId: google.maps.MapTypeId.TERRAIN
+  }; //지도 객체 4개 생성
+  var map1 = new google.maps.Map(document.getElementById("Map1"),map1);
+  var map2 = new google.maps.Map(document.getElementById("Map2"),map2);
+  var map3 = new google.maps.Map(document.getElementById("Map3"),map3);
+  var map4 = new google.maps.Map(document.getElementById("Map4"),map4);
+}
+</script>
+<!-- 구글 지도맵에 접근할 키값 설정 text파일이용 작성-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1hajJK4zBP8U5dvqGSiAxkpLIuzAj87Y&callback=myMap">
+</script>
+<!-- 30일 가능 2021년10월8일 -->
+</body>
+</html>

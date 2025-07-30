@@ -1,0 +1,45 @@
+<html>
+<head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" 
+    src="https://www.gstatic.com/charts/loader.js">
+    </script>
+</head>
+
+  <body>
+    <!--pie chart가 실제로 그려질 부분-->
+    <div id="chart_div"></div>
+    
+<script type="text/javascript">
+      // 구글 오픈 API에서 차트 객체 로드 
+      google.charts.load('current', {'packages':['corechart']});
+      // Google Visualization API  로드시 callback 사용할 콜백 함수 설정.
+      google.charts.setOnLoadCallback(drawChart);
+      // 이 함수에서 데이터 설정 및 차트를 그린다.
+      function drawChart() {
+        // 구글 차트는 데이터 테이블이라는 객체로 차트의 데이터를 전달한다.
+        var data = new google.visualization.DataTable();
+        //열 설정 2개를 설정하고 데이터 타입, 열이름
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        //행 추가 5개의 행을 추가한다. 
+        //파이차트는  전체 합의 비율로 표시
+        data.addRows([
+          ['Mushrooms', 3],
+          ['Onions', 2],
+          ['Olives', 1],
+          ['Zucchini', 1],
+          ['Pepperoni', 3]
+        ]);
+        // chart 옵션 설정 범례, 가로 세로 
+        var options = {'title':'How Much Pizza I Ate Last Night',
+                       'width':400,
+                       'height':300};
+        // 파이 차트 객체 생성 및 div 태그에 내용 전달
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        //차트 그리고 태그, 옵션
+        chart.draw(data, options);
+      }
+</script>    
+  </body>
+</html>

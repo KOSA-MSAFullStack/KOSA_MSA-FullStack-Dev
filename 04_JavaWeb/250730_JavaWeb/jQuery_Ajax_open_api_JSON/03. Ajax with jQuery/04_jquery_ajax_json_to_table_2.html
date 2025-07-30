@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> Ajax </title>
+<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+
+<script>
+$(document).ready(function () {
+	$.ajax({
+		url:"MOCK_DATA.json", //데이터 위치
+		dataType:"json",  //데이 타입
+		success:function(data) {  //데이터 로드 성송시
+			if(data.length > 0) {
+				var tb = $("<table />");
+				for(var i in data) { //행 처리
+					var id = data[i].id; //data에서 각 요소 추출
+					var first_name = data[i].first_name;
+					var last_name = data[i].last_name;
+					var email = data[i].email;
+					var gender = data[i].gender;
+					var row = $("<tr />").append(
+						$("<td />").text(id),
+						$("<td />").text(first_name),
+						$("<td />").text(last_name),
+						$("<td />").text(email),
+						$("<td />").text(gender)
+					);
+					tb.append(row); //행 추가
+				}//end for
+				$(".wrap").append(tb); //div에 추가
+			}//end if
+		}//end succ..
+	});// end ajax
+});//// end doc..read
+</script>
+</head>
+<body>
+  <div class="wrap"></div>
+</body>
+</html>

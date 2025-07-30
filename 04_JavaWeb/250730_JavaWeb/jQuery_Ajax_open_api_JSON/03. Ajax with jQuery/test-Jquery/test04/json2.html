@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON 테스트</title>
+   <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+      $(function() {
+          //id checkJson 클릭
+          $("#checkJson").click(function() {
+              //JSON 정수
+             var jsonStr = '{"age": [22, 33, 44]}';  
+             var jsonInfo = JSON.parse(jsonStr);
+             var output ="회원 나이<br>";
+             output += "=======<br>";
+        
+             for(var i in jsonInfo.age) {
+                output += jsonInfo.age[i]+"<br>";
+             }//end for
+             $("#output").html(output);
+        });//end click
+     });//end func
+</script>
+</head>
+<body>
+    <a id="checkJson" style="cursor:pointer">출력</a><br><br>
+    <div id="output"></div>
+</body>
+</html>

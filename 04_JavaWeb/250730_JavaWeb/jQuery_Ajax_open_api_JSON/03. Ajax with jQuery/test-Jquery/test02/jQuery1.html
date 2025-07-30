@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ID 셀렉터 연습1</title>
+<script  src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
+<script type="text/javascript"> 
+$(document).ready(function(){		
+  //페이지 로드시 id가unique2인 태그 검색후 
+  // html 메서드 이용 태그 값을 가져옴		
+  alert($("#unique2").html());	
+});
+</script>
+</head>
+<body>
+  <div class="class1">안녕하세요.</div>
+  <div id="unique2">제이쿼리입니다!!</div>
+  <div id="unique3">
+     <p>제이쿼리는 아주 쉽습니다!!!</p> 
+  </div>
+</body>
+</html>

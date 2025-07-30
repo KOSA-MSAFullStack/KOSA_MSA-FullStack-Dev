@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSON 테스트</title>
+  <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    $(function() {
+      //id checkJson 클릭
+        $("#checkJson").click(function() {
+          //JSON 배열 선언
+        var jsonStr  = '{"name": ["홍길동", "이순신", "임꺽정"] }'; 
+        //JSON 자료형 가져오기         
+        var jsonInfo = JSON.parse(jsonStr);
+        var output ="회원 이름<br>";
+        output += "=======<br>";
+        //JSON 출력
+        for(var i in jsonInfo.name) {
+            output += jsonInfo.name[i]+"<br>";
+        }//end for
+        $("#output").html(output);
+      });//end click
+    });//end func
+        
+</script>
+  </head>
+  <body>
+    <a id="checkJson" style="cursor:pointer">출력</a><br><br>
+    <div id="output"></div>
+  </body>
+</html>

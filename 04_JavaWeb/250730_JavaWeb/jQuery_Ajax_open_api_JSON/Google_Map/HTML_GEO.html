@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="getLocation()">Try It</button>
+<p id="demo"></p>
+<script>
+//html 태그 변수에 대입
+var x = document.getElementById("demo");
+function getLocation() { //브라우져 gps 기능 확인
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) { //p태그에 좌표값 입력
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+</body>
+</html>

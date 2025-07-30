@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title> Ajax </title>
+<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+
+<script>
+ $(document).ready(function () {
+	$.ajax({
+		url:"data.json", //데이터 위치
+		dataType:"json",  //데이터 타입 
+		success:function(data) { //데이터 로드 성공시
+			console.log(data);
+			if(data.length > 0) {  //json 객체가 1개 이상이면
+				var tb = $("<table />");
+				for(var i in data) {  //행 만들기
+					var name = data[i].name; //data에서 각요소 추출				
+					var price = data[i].price;				
+					var row = $("<tr />").append(
+						$("<td />").text(name),
+						$("<td />").text(price)
+					);
+					tb.append(row);
+					console.log(row);
+				}//end fir
+				console.log(tb);
+				$(".wrap").append(tb); //div 태그에 추가
+			}//end if
+		}//end sucess
+	});//end ajax
+});// end doc..
+</script>
+</head>
+<body>
+  <div class="wrap"></div>
+</body>
+</html>

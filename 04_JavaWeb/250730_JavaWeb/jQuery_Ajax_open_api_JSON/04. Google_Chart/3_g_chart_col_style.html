@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <script type="text/javascript" 
+    src="https://www.gstatic.com/charts/loader.js">
+    </script>
+</head>
+<body>
+ <div id="columnchart_material" style="width: 800px; height: 500px;">
+ </div>
+
+ <script type="text/javascript">
+ 		// 구글 오픈 API에서 차트 객체 로드
+      google.charts.load('current', {'packages':['bar']});
+      // Google Visualization API  로드시 callback 사용할 콜백 함수 설정.
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+    	  //1번째 행이 열이름 나머지는 데이터 배열 데이터 테이블
+    	  //csv나 R과의 연동을 위해
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales', 'Expenses', 'Profit'],
+          ['2014', 1000, 400, 200],
+          ['2015', 1170, 460, 250],
+          ['2016', 660, 1120, 300],
+          ['2017', 1030, 540, 350]
+        ]);
+    	  
+		//차트 옵션 설정
+        var options = {
+          chart: {
+            title: 'Company Performance',
+            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+          }
+        };
+		
+        //차트 객체 생성
+        var chart = 
+        	new google.charts.Bar(document.getElementById('columnchart_material'));
+      //파이 차트 그르기 데이터, 옵션
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>  
+</body>
+</html>
