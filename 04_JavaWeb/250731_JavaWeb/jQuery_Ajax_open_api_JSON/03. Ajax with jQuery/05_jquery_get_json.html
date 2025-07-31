@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery Ajax Basic</title>
+    <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+    <script>
+      //json데이터 가져오기
+      $(document).ready(function () {
+        $.getJSON("data.json", function (data) {
+          console.log(data); //내용 출력
+          $.each(data, function (key, value) {
+            //div에 내용 추가
+            $(".wrap").append(
+              "<h1>" + value.name + " : " + value.price + "</h1>"
+            );
+          });
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="wrap"></div>
+  </body>
+</html>

@@ -1,36 +1,34 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>예외 처리</title>
-</head>
-<body>
-  <h1>json 예외 처리했을 때</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>예외 처리</title>
+  </head>
+  <body>
+    <h1>json 예외 처리했을 때</h1>
 
-  <script>
-    let json = '{"grade": 3, "age": 25}';
-    let test = JSON.parse(json);
-    console.log(test);
-    console.log(test.grade);
-    console.log(`${test.grade}`);
-    console.log("${test.grade}");
-    
-    
-  
-    try {
-      let user = JSON.parse(json);
-      if (!user.name) {
-        console.log("사용자 이름이 없습니다.");
-        //catch 에 err로 전달
-        throw "에러 사용자 이름이 없습니다.";
+    <script>
+      let json = '{"grade": 3, "age": 25}';
+      let test = JSON.parse(json);
+      console.log(test);
+      console.log(test.grade);
+      console.log(`${test.grade}`);
+      console.log("${test.grade}");
+
+      try {
+        let user = JSON.parse(json);
+        if (!user.name) {
+          console.log("사용자 이름이 없습니다.");
+          //catch에 err로 전달
+          throw "에러 사용자 이름이 없습니다.";
+        }
+      } catch (err) {
+        console.error(err);
+        //console.error(`error name : ${err.name}`);
+        //console.error(`error message : ${err.message}`);
       }
-    } catch (err) {
-      console.error(err);
-      //console.error(`error name : ${err.name}`);
-      //console.error(`error message : ${err.message}`);
-    }
-  </script>
-</body>
+    </script>
+  </body>
 </html>
