@@ -38,20 +38,21 @@ public class LoginServlet  extends HttpServlet{
       
       System.out.println("아이디:"+user_id);
       System.out.println("비밀번호:"+user_pw);
+
       if(user_id!= null &&(user_id.length()!=0)){
-  		out.print("<html>");  
-  		out.print("<body>");
-  		out.print( user_id +" 님!! 로그인 하셨습니다." );
-  		out.print("</html>");
-  		out.print("</body>");
-        }else{
-  		out.print("<html>");  
-  		out.print("<body>");
-  		out.print("아이디를 입력하세요!!!" ) ;
-  		out.print("<br>");
-  		out.print("<a href='http://localhost:8080/pro06/test01/login.html'>로그인창으로 이동  </a>");
-  		out.print("</html>");
-  		out.print("</body>");
+         out.print("<html>");  
+         out.print("<body>");
+         out.print( user_id +" 님!! 로그인 하셨습니다." );
+         out.print("</html>");
+         out.print("</body>");
+      }else{
+         out.print("<html>");  
+         out.print("<body>");
+         out.print("아이디를 입력하세요!!!" ) ;
+         out.print("<br>");
+         out.print("<a href='http://localhost:8080/pro06/test01/login.html'>로그인창으로 이동  </a>");
+         out.print("</html>");
+         out.print("</body>");
         }      
       
    }
