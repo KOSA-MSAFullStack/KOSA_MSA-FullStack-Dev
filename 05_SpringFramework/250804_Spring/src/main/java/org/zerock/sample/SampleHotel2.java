@@ -13,7 +13,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class SampleHotel2 {
     private Chef chef;  
-}//end class
+}
 
 
 
