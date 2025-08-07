@@ -44,22 +44,18 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO, AutoCLoseable {
 
 	@Override
 	public void add(Employee emp) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void update(Employee emp) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void delete(int id) {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public Employee findById(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -112,7 +108,6 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO, AutoCLoseable {
 
 	@Override
 	public void close(Connection conn, Statement stmt, ResultSet rs) {
-		// TODO Auto-generated method stub
 		try {
 			rs.close();
 			stmt.close();
