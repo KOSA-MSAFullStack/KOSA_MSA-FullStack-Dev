@@ -12,7 +12,6 @@ public class jdbc_test {
 	 */
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		// 오라클 드라이버와 URL 정보
 		 String driver = "oracle.jdbc.driver.OracleDriver";			
 			// 오라클 드라이버 정보를 이용하여 간단한 연동 테스트
