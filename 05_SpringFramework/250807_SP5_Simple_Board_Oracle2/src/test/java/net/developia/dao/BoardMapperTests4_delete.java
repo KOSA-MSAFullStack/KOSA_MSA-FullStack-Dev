@@ -25,7 +25,7 @@ public class BoardMapperTests4_delete {
     public void testDelete() throws SQLException {
         //db에 해당데이터가 존재해야함
         ArticleDTO board = new ArticleDTO();
-        board.setNo(4);
+        board.setNo(5);
         board.setPassword("1234");
         log.info("Delete count:" + mapper.deleteArticle(board));
     }
