@@ -8,6 +8,6 @@ public interface EmployeeDAO {
 	public void update(Employee emp);
 	public void delete(int id);
 	public Employee findById(int id);
-	public List getAllEmployee();
+	public List<Employee> getAllEmployee();
 	
 }//end inter..

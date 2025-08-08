@@ -57,7 +57,7 @@ public class ListController implements Initializable {
 		showButton();
 	}
 	
-	private ListView listView;
+	private ListView<BorderPane> listView;
 	
 	public void handleBtnLeft(ActionEvent event) {
 		if(currentPage>1) { 
@@ -127,12 +127,12 @@ public class ListController implements Initializable {
 			HBox hbox = new HBox();
 			hbox.setPadding(new Insets(10));
 			hbox.setAlignment(Pos.CENTER_LEFT);
-			Label label = new Label("½º¸¶Æ®Æù 0"+i);
+			Label label = new Label("ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ 0"+i);
 			label.setFont(new Font(15));
 			hbox.getChildren().add(label);
 			borderPane.setCenter(hbox);
 			
-			Button button = new Button("»ó¼¼º¸±â");
+			Button button = new Button("ï¿½ó¼¼ºï¿½ï¿½ï¿½");
 			borderPane.setRight(button);
 			BorderPane.setAlignment(button, Pos.CENTER);
 			

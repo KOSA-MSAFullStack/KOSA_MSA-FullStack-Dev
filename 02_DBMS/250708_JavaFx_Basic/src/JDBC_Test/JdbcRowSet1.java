@@ -1,6 +1,6 @@
 package JDBC_Test;
 
-import java.sql.SQLException;
+//import java.sql.SQLException;
 import javax.sql.rowset.JdbcRowSet;
 import javax.sql.rowset.RowSetProvider;
 

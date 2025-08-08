@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 	public static void main(String[] args) {
        List<SalesTxn> tList = SalesTxn.createTxnList();
        SalesTxn first = tList.get(0);
+       System.out.println(first);
        // Define a Predicate to filter transactions in Massachusetts
        Predicate<SalesTxn> massSales = t -> t.getState().equals(State.MA);
        // Filter and print transactions using a stream

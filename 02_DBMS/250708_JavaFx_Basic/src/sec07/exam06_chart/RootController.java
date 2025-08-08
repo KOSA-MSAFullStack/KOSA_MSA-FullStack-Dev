@@ -13,8 +13,8 @@ import javafx.scene.chart.XYChart;
 
 public class RootController implements Initializable {
 	@FXML private PieChart pieChart;
-	@FXML private BarChart barChart;
-	@FXML private AreaChart areaChart;
+	@FXML private BarChart<String, Number> barChart;
+	@FXML private AreaChart<String, Number> areaChart;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -27,23 +27,23 @@ public class RootController implements Initializable {
 		));
 		
 		//XYChart 데이터 설정
-		XYChart.Series series1 = new XYChart.Series();
+		XYChart.Series<String, Number> series1 = new XYChart.Series<>();
 		series1.setName("남자");       
 		series1.setData(FXCollections.observableArrayList(
-			new XYChart.Data("2015", 70),
-			new XYChart.Data("2016", 40),
-			new XYChart.Data("2017", 50),
-			new XYChart.Data("2018", 30)
+			new XYChart.Data<String, Number>("2015", 70),
+			new XYChart.Data<String, Number>("2016", 40),
+			new XYChart.Data<String, Number>("2017", 50),
+			new XYChart.Data<String, Number>("2018", 30)
 		));  
 		
 		////XYChart 데이터 설정
-		XYChart.Series series2 = new XYChart.Series();
+		XYChart.Series<String, Number> series2 = new XYChart.Series<>();
 		series2.setName("여자");       
 		series2.setData(FXCollections.observableArrayList(
-			new XYChart.Data("2015", 30),
-			new XYChart.Data("2016", 60),
-			new XYChart.Data("2017", 50),
-			new XYChart.Data("2018", 60)
+			new XYChart.Data<String, Number>("2015", 30),
+			new XYChart.Data<String, Number>("2016", 60),
+			new XYChart.Data<String, Number>("2017", 50),
+			new XYChart.Data<String, Number>("2018", 60)
 		));
 		
 		//BarChart 에 XYChart 데이터 삽입
@@ -51,13 +51,13 @@ public class RootController implements Initializable {
 		barChart.getData().add(series2);
 		
 		//XYChart 데이터 설정
-		XYChart.Series series3 = new XYChart.Series();
+		XYChart.Series<String, Number> series3 = new XYChart.Series<>();
 		series3.setName("평균 온돈");       
 		series3.setData(FXCollections.observableArrayList(
-			new XYChart.Data("2015", 13),
-			new XYChart.Data("2016", 6),
-			new XYChart.Data("2017", 22),
-			new XYChart.Data("2018", 19)
+			new XYChart.Data<String, Number>("2015", 13),
+			new XYChart.Data<String, Number>("2016", 6),
+			new XYChart.Data<String, Number>("2017", 22),
+			new XYChart.Data<String, Number>("2018", 19)
 		));
 		//AreaChart 에 XYChart 데이터 삽입
 		areaChart.getData().add(series3);

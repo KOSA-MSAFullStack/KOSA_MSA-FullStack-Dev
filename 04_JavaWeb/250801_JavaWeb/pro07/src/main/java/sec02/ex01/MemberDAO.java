@@ -2,7 +2,7 @@ package sec02.ex01;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
+//import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -30,8 +30,8 @@ public class MemberDAO {
 		}
 	}
 
-	public List listMembers() {
-		List list = new ArrayList();
+	public List<MemberVO> listMembers() {
+		List<MemberVO> list = new ArrayList<>();
 		try {
 			//connDB();
 			con=dataFactory.getConnection();

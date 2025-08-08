@@ -24,7 +24,7 @@ public class InputServlet2 extends HttpServlet {
 
 		// generates a series of elements
 		// 전체 이름 다 가져옴
-		Enumeration enu = request.getParameterNames();
+		Enumeration<String> enu = request.getParameterNames();
 		// 각요소가 있는지 확인
 		while (enu.hasMoreElements()) {
 			// 요소에서 이름 추출 후 저장

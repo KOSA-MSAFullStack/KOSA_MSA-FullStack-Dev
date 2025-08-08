@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+//import java.sql.Statement;
 
 public class PreparedStatement_t1 {
 
@@ -39,6 +39,7 @@ public class PreparedStatement_t1 {
 				System.out.println(employee_id + " " + first_name + " " + salary + " " + hire_date + " " + hire_date2);
 			} // end while
 
+			System.out.println(driver);
 		} catch (Exception e) {
 			System.out.println("DB 연결에 문제가 있습니다.");
 			e.printStackTrace();

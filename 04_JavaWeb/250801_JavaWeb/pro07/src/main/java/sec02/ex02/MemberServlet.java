@@ -3,8 +3,8 @@ package sec02.ex02;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.ArrayList;
+//import java.sql.Timestamp;
+//import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.servlet.ServletException;
@@ -58,7 +58,7 @@ public class MemberServlet extends HttpServlet {
       }//end if
       
      //디비 데이터 가져오기 
-     List list=dao.listMembers();
+     List<MemberVO> list=dao.listMembers();
      
      out.print("<html><body>");
      out.print("<table border=1><tr align='center' bgcolor='lightgreen'>");

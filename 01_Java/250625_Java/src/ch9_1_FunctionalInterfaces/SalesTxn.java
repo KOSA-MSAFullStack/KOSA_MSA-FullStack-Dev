@@ -100,6 +100,7 @@ public class SalesTxn {
        private String paymentType;
        public Builder txnId(int txnId) {  
            this.txnId = txnId;  
+           System.out.println(txnId);
            return this;       
        }
        public Builder salesPerson(String salesPerson) {      

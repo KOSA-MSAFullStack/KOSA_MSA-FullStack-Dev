@@ -31,7 +31,9 @@ public class CRUD_1 {
 				location_id = rs.getString("location_id"); // 네번째 필드 가져옴
 				System.out.println(department_id + " " + department_name +
 						" " + manager_id + " " + location_id);
-			} // end while				
+			} // end while	
+			
+			System.out.println(driver);
 		} catch (Exception e) {
 			System.out.println("DB 문제가 있습니다.");
 			e.printStackTrace();

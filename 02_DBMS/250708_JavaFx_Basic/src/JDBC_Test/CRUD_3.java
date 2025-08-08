@@ -71,6 +71,9 @@ public class CRUD_3 {
 				System.out.println("번호값이 없어서 수정할 수 없습니다.");
 			} // end if
 		
+			System.out.println(driver);
+			System.out.println(DEPARTMENT_ID);
+			scan.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}//end try

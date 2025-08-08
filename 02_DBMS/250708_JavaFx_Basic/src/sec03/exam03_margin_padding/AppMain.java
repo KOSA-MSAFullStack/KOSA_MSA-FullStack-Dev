@@ -27,7 +27,7 @@ public class AppMain extends Application {
 		
 		hbox2.getChildren().add(button2);
 		Scene scene2 = new Scene(hbox2);
-		
+		System.out.println(scene2);
 		
 		primaryStage.setTitle("AppMain");		
 		primaryStage.setScene(scene);	//scene2	

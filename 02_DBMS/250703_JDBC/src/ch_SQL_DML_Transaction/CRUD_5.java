@@ -33,6 +33,8 @@ public class CRUD_5 {
 				System.out.println(department_id + " " + department_name +
 						" " + manager_id + " " + location_id);
 			} // end while				
+			
+			System.out.println(driver);
 		} catch (SQLException ex) {
 			while(ex != null) {
 				System.out.println("SQLState:  " + ex.getSQLState());

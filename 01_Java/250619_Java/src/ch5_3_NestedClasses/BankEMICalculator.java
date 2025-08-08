@@ -17,6 +17,8 @@ public class BankEMICalculator {
        this.accountNo = accountNo;
        this.loanAmount = loanAmount;
        this.monthlyPayment = helper.calcMonthlyPayment(loanAmount);
+
+       System.out.println(loanAmount);
    }
    // Getter for monthly payment
    public double getMonthlyPayment() {

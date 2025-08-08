@@ -15,7 +15,7 @@ import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
+//import javafx.scene.layout.BorderPane;
 
 public class RootController implements Initializable {
 	//컨트롤러 등록

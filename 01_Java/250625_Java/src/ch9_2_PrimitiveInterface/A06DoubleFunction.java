@@ -12,6 +12,8 @@ public class A06DoubleFunction {
        String result = calc.apply(20);
        // Print the result
        System.out.println("New value is: " + result);
+
+       System.out.println(test);
    }
 }
 

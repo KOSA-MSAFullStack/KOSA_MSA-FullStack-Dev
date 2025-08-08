@@ -60,9 +60,8 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO, AutoCLoseable {
 	}
 
 	@Override
-	public List getAllEmployee() {
-
-		List  EmployeeList = new ArrayList();
+	public List<Employee> getAllEmployee() {
+		List<Employee> EmployeeList = new ArrayList<>();
 		try {
 			// sql --> table --> view
 			String query = "select * from HR.EMPLOYEES";
@@ -90,6 +89,7 @@ public class EmployeeDAOJDBCImpl implements EmployeeDAO, AutoCLoseable {
 				emp.setEMAIL(EMAIL);
 				emp.setPHONE_NUMBER(PHONE_NUMBER);
 				emp.setHIRE_DATE(HIRE_DATE);
+				emp.setJOB_ID(JOB_ID);
 				emp.setSALARY(SALARY);
 				emp.setCOMMISSION_PCT(COMMISSION_PCT);
 				emp.setMANAGER_ID(MANAGER_ID);

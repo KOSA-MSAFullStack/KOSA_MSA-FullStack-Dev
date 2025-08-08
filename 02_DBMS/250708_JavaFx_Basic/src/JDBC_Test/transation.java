@@ -1,7 +1,7 @@
 package JDBC_Test;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+//import java.io.BufferedReader;
+//import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -60,6 +60,7 @@ public class transation {
 			} else {
 				System.out.println("해당 번호가 없어서 삭제할 수 없습니다.");
 			} // end if
+			scan.close();
 			rs.close();
 			pstmt.close();
 			con.close();

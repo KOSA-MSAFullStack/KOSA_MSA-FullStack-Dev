@@ -16,6 +16,7 @@ public class Jdbc_test {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, uid, pwd);
 			System.out.println("제대로 연결되었습니다.");
+			System.out.println(con);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("연결에 실패하였습니다.");

@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+//import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +27,8 @@ public class MemberDAO {
 		}
 	}
 
-	public List listMembers() {
-		List list = new ArrayList();
+	public List<MemberBean> listMembers() {
+		List<MemberBean> list = new ArrayList<>();
 		try {
 			con = dataFactory.getConnection();
 			String query = "select * from t_member order by joinDate desc ";

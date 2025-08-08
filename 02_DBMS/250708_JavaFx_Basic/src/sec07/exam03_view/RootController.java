@@ -43,7 +43,7 @@ public class RootController implements Initializable {
 		});
 		
 		//총7개의 데이터 등록 TableView 에서 사용할 데이터
-		ObservableList phoneList = FXCollections.observableArrayList(
+		ObservableList<Phone> phoneList = FXCollections.observableArrayList(
 		    new Phone("갤럭시S1", "phone01.png"),
 		    new Phone("갤럭시S2", "phone02.png"),
 		    new Phone("갤럭시S3", "phone03.png"),

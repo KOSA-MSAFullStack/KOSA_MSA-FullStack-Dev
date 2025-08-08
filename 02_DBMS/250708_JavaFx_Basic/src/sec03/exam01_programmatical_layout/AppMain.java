@@ -6,6 +6,7 @@ import javafx.scene.layout.HBox;
 import javafx.geometry.Insets;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.collections.ObservableList;
 
@@ -22,7 +23,7 @@ public class AppMain extends Application {
 		Button button = new Button();				//Button 컨트롤 생성
 		button.setText("확인");				//Button 글자 설정
 		
-		ObservableList list = hbox.getChildren();		//HBox의 ObservableList 얻기
+		ObservableList<Node> list = hbox.getChildren();		//HBox의 ObservableList 얻기
 		list.add(textField);			//TextField 컨트롤 배치
 		list.add(button);				//Button의 컨트롤 배치
 		

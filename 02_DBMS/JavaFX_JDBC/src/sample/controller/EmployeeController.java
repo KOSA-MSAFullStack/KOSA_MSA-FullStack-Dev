@@ -27,7 +27,7 @@ public class EmployeeController {
 	@FXML private TextField surnameText;
 	@FXML private TextField emailText;
 
-	@FXML private TableView employeeTable;
+	@FXML private TableView<Employee> employeeTable;
 	@FXML private TableColumn<Employee, Integer> empIdColumn;
 	@FXML private TableColumn<Employee, String> empNameColumn;
 	@FXML private TableColumn<Employee, String> empLastNameColumn;

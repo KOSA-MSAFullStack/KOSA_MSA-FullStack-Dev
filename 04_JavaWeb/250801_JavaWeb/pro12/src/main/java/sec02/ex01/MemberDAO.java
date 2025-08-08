@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+//import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +27,8 @@ public class MemberDAO {
 		}
 	}
 
-	public List listMembers(MemberVO memberVO) {
-		List membersList = new ArrayList();
+	public List<MemberVO> listMembers(MemberVO memberVO) {
+		List<MemberVO> membersList = new ArrayList<>();
 		String _name=memberVO.getName();
 		try {
 			con = dataFactory.getConnection();

@@ -19,8 +19,8 @@ public class MemberDAO {
 	private Connection con;
 	private PreparedStatement pstmt;
 
-	public List listMembers() {
-		List list = new ArrayList();
+	public List<MemberVO> listMembers() {
+		List<MemberVO> list = new ArrayList<>();
 		try {
 			connDB();
 			String query = "select * from t_member ";

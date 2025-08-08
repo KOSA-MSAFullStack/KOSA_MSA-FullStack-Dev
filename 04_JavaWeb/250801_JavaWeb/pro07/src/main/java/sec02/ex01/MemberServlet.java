@@ -19,7 +19,7 @@ public class MemberServlet extends HttpServlet {
       response.setContentType("text/html;charset=utf-8");
       PrintWriter out = response.getWriter();	
       MemberDAO dao = new MemberDAO();
-      List list = dao.listMembers();
+      List<MemberVO> list = dao.listMembers();
 	
       out.print("<html><body>");
       out.print("<table border=1><tr align='center' bgcolor='lightgreen'>");

@@ -13,6 +13,7 @@ public class VariableExampleClass {
    // The final instance variable 'field' is assigned a value here.
    public VariableExampleClass() {
        field = 100;
+       System.out.println(field);
    }
   
    /**

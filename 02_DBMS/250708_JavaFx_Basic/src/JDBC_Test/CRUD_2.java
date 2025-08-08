@@ -64,7 +64,8 @@ public class CRUD_2 {
 				
 			}//end if	
 			
-		
+			System.out.println(driver);
+			scan.close();
 		} catch (Exception e) {
 			System.out.println("DB insert에 문제가 있습니다.");
 			e.printStackTrace();

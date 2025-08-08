@@ -10,7 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
+//import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
@@ -35,9 +35,9 @@ public class RootController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		//list = FXCollections.observableArrayList();
 		list = FXCollections.observableArrayList(
-			new Student("È«±æµ¿A", 40, 60, 80)	,
-			new Student("È«±æµ¿B", 60, 80, 40)	,
-			new Student("È«±æµ¿C", 80, 40, 60)	
+			new Student("È«ï¿½æµ¿A", 40, 60, 80)	,
+			new Student("È«ï¿½æµ¿B", 60, 80, 40)	,
+			new Student("È«ï¿½æµ¿C", 80, 40, 60)	
 		);
 		
 		TableColumn tc = tableView.getColumns().get(0);
@@ -67,7 +67,7 @@ public class RootController implements Initializable {
 			Stage dialog = new Stage(StageStyle.UTILITY);
 			dialog.initModality(Modality.WINDOW_MODAL);
 			dialog.initOwner(btnAdd.getScene().getWindow());
-			dialog.setTitle("Ãß°¡");
+			dialog.setTitle("ï¿½ß°ï¿½");
 		
 			Parent parent = FXMLLoader.load(getClass().getResource("form.fxml"));
 			
@@ -101,14 +101,14 @@ public class RootController implements Initializable {
 			Stage dialog = new Stage(StageStyle.UTILITY);
 			dialog.initModality(Modality.WINDOW_MODAL);
 			dialog.initOwner(btnAdd.getScene().getWindow());
-			dialog.setTitle("¸·´ë ±×·¡ÇÁ");
+			dialog.setTitle("ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½");
 		
 			Parent parent = FXMLLoader.load(getClass().getResource("barchart.fxml"));
 			
 			BarChart barChart = (BarChart) parent.lookup("#barChart");
 			
 			XYChart.Series seriesKorean = new XYChart.Series();
-			seriesKorean.setName("±¹¾î");   
+			seriesKorean.setName("ï¿½ï¿½ï¿½ï¿½");   
 			ObservableList koreanList = FXCollections.observableArrayList();
 			for(int i=0; i<list.size(); i++) {
 				koreanList.add(new XYChart.Data(list.get(i).getName(), list.get(i).getKorean()));
@@ -117,7 +117,7 @@ public class RootController implements Initializable {
 			barChart.getData().add(seriesKorean);
 			
 			XYChart.Series seriesMath = new XYChart.Series();
-			seriesMath.setName("¼öÇÐ");   
+			seriesMath.setName("ï¿½ï¿½ï¿½ï¿½");   
 			ObservableList mathList = FXCollections.observableArrayList();
 			for(int i=0; i<list.size(); i++) {
 				mathList.add(new XYChart.Data(list.get(i).getName(), list.get(i).getMath()));
@@ -126,7 +126,7 @@ public class RootController implements Initializable {
 			barChart.getData().add(seriesMath);
 			
 			XYChart.Series seriesEnglish = new XYChart.Series();
-			seriesEnglish.setName("¿µ¾î");   
+			seriesEnglish.setName("ï¿½ï¿½ï¿½ï¿½");   
 			ObservableList englishList = FXCollections.observableArrayList();
 			for(int i=0; i<list.size(); i++) {
 				englishList.add(new XYChart.Data(list.get(i).getName(), list.get(i).getEnglish()));

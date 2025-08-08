@@ -3,6 +3,7 @@
 package org.zerock.config;
 //import javax.servlet.ServletRegistration.Dynamic;
 
+import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.support.
 AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -19,6 +20,7 @@ public class WebConfig extends AbstractAnnotationConfigDispatcherServletInitiali
 		return new Class[] {ServletConfig.class};
 	}
 	@Override
+	@NonNull
 	protected String[] getServletMappings() {
 		return new String[] {"/"};
 	}
