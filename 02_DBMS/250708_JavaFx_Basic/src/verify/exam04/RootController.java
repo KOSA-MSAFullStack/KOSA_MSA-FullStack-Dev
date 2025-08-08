@@ -29,32 +29,31 @@ public class RootController implements Initializable {
 	@FXML private Button btnAdd;
 	@FXML private Button btnBarChart;
 	
+	// FXML로부터 직접 주입받을 TableColumn 필드 선언
+	@FXML private TableColumn<Student, String> nameColumn;
+	@FXML private TableColumn<Student, Integer> koreanColumn;
+	@FXML private TableColumn<Student, Integer> mathColumn;
+	@FXML private TableColumn<Student, Integer> englishColumn;
+
 	private ObservableList<Student> list;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//list = FXCollections.observableArrayList();
 		list = FXCollections.observableArrayList(
-			new Student("ȫ�浿A", 40, 60, 80)	,
-			new Student("ȫ�浿B", 60, 80, 40)	,
-			new Student("ȫ�浿C", 80, 40, 60)	
+			new Student("홍길동A", 40, 60, 80)	,
+			new Student("홍길동B", 60, 80, 40)	,
+			new Student("홍길동C", 80, 40, 60)	
 		);
 		
-		TableColumn tc = tableView.getColumns().get(0);
-		tc.setCellValueFactory(new PropertyValueFactory("name"));
-		tc.setStyle("-fx-alignment: CENTER;");
-		
-		tc = tableView.getColumns().get(1);
-		tc.setCellValueFactory(new PropertyValueFactory("korean"));
-		tc.setStyle("-fx-alignment: CENTER;");
-		
-		tc = tableView.getColumns().get(2);
-		tc.setCellValueFactory(new PropertyValueFactory("math"));
-		tc.setStyle("-fx-alignment: CENTER;");
-		
-		tc = tableView.getColumns().get(3);
-		tc.setCellValueFactory(new PropertyValueFactory("english"));
-		tc.setStyle("-fx-alignment: CENTER;");
+		nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+		nameColumn.setStyle("-fx-alignment: CENTER;");
+		koreanColumn.setCellValueFactory(new PropertyValueFactory<>("korean"));
+		koreanColumn.setStyle("-fx-alignment: CENTER;");
+		mathColumn.setCellValueFactory(new PropertyValueFactory<>("math"));
+		mathColumn.setStyle("-fx-alignment: CENTER;");
+		englishColumn.setCellValueFactory(new PropertyValueFactory<>("english"));
+		englishColumn.setStyle("-fx-alignment: CENTER;");
 		
 		tableView.setItems(list);
 		
@@ -67,7 +66,7 @@ public class RootController implements Initializable {
 			Stage dialog = new Stage(StageStyle.UTILITY);
 			dialog.initModality(Modality.WINDOW_MODAL);
 			dialog.initOwner(btnAdd.getScene().getWindow());
-			dialog.setTitle("�߰�");
+			dialog.setTitle("추가");
 		
 			Parent parent = FXMLLoader.load(getClass().getResource("form.fxml"));
 			
@@ -101,37 +100,34 @@ public class RootController implements Initializable {
 			Stage dialog = new Stage(StageStyle.UTILITY);
 			dialog.initModality(Modality.WINDOW_MODAL);
 			dialog.initOwner(btnAdd.getScene().getWindow());
-			dialog.setTitle("���� �׷���");
+			dialog.setTitle("막대 그래프");
 		
 			Parent parent = FXMLLoader.load(getClass().getResource("barchart.fxml"));
 			
-			BarChart barChart = (BarChart) parent.lookup("#barChart");
+			// X축: 학생 이름(String), Y축: 점수(Integer)
+			@SuppressWarnings("unchecked") // BarChart의 lookup은 제네릭을 반환하지 않으므로 경고 억제가 필요
+			BarChart<String, Integer> barChart = (BarChart<String, Integer>) parent.lookup("#barChart");
 			
-			XYChart.Series seriesKorean = new XYChart.Series();
-			seriesKorean.setName("����");   
-			ObservableList koreanList = FXCollections.observableArrayList();
-			for(int i=0; i<list.size(); i++) {
-				koreanList.add(new XYChart.Data(list.get(i).getName(), list.get(i).getKorean()));
+			// 국어 시리즈
+			XYChart.Series<String, Integer> seriesKorean = new XYChart.Series<>();
+			seriesKorean.setName("국어");   
+			for(Student s : list) {
+				seriesKorean.getData().add(new XYChart.Data<>(s.getName(), s.getKorean()));
 			}
-			seriesKorean.setData(koreanList);
 			barChart.getData().add(seriesKorean);
-			
-			XYChart.Series seriesMath = new XYChart.Series();
-			seriesMath.setName("����");   
-			ObservableList mathList = FXCollections.observableArrayList();
-			for(int i=0; i<list.size(); i++) {
-				mathList.add(new XYChart.Data(list.get(i).getName(), list.get(i).getMath()));
+			// 수학 시리즈
+			XYChart.Series<String, Integer> seriesMath = new XYChart.Series<>();
+			seriesMath.setName("수학");
+			for(Student s : list) {
+				seriesMath.getData().add(new XYChart.Data<>(s.getName(), s.getMath()));
 			}
-			seriesMath.setData(mathList);
 			barChart.getData().add(seriesMath);
-			
-			XYChart.Series seriesEnglish = new XYChart.Series();
-			seriesEnglish.setName("����");   
-			ObservableList englishList = FXCollections.observableArrayList();
-			for(int i=0; i<list.size(); i++) {
-				englishList.add(new XYChart.Data(list.get(i).getName(), list.get(i).getEnglish()));
+			// 영어 시리즈
+			XYChart.Series<String, Integer> seriesEnglish = new XYChart.Series<>();
+			seriesEnglish.setName("영어");
+			for(Student s : list) {
+				seriesEnglish.getData().add(new XYChart.Data<>(s.getName(), s.getEnglish()));
 			}
-			seriesEnglish.setData(englishList);
 			barChart.getData().add(seriesEnglish);
 			
 			Button btnClose = (Button) parent.lookup("#btnClose");
@@ -140,7 +136,9 @@ public class RootController implements Initializable {
 			Scene scene = new Scene(parent);
 			dialog.setScene(scene);
 			dialog.show();	
-		} catch (IOException e) {}		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
 	}
 }
 

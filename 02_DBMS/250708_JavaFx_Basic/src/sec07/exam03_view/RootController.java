@@ -24,6 +24,10 @@ public class RootController implements Initializable {
 	@FXML private TableView<Phone> tableView;	
 	@FXML private ImageView imageView;
 	
+    // FXML에서 TableColumn을 직접 주입받도록 필드 추가
+    @FXML private TableColumn<Phone, String> tcSmartPhone;
+    @FXML private TableColumn<Phone, String> tcImage;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -54,17 +58,10 @@ public class RootController implements Initializable {
 		);//end observableArrayList
 		
 		//TableView 열 세팅
-		TableColumn tcSmartPhone = tableView.getColumns().get(0);
-		tcSmartPhone.setCellValueFactory(
-			new PropertyValueFactory("smartPhone")
-		);
+		// 인덱스로 컬럼을 가져오는 코드 대신, 주입받은 필드를 직접 사용
+		tcSmartPhone.setCellValueFactory(new PropertyValueFactory<>("smartPhone"));
 		tcSmartPhone.setStyle("-fx-alignment: CENTER;");	
-		
-		//TableView 열 세팅
-		TableColumn tcImage = tableView.getColumns().get(1);
-		tcImage.setCellValueFactory(
-			new PropertyValueFactory("image")
-	    );
+		tcImage.setCellValueFactory(new PropertyValueFactory<>("image"));
 		tcImage.setStyle("-fx-alignment: CENTER;");		
 		
 		//phoneList 등록

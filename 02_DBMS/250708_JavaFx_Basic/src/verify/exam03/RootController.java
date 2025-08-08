@@ -25,27 +25,27 @@ public class RootController implements Initializable {
 	@FXML private TableView<Student> tableView;
 	@FXML private Button btnAdd;
 	
+	// FXML로부터 직접 주입받을 TableColumn 필드 선언
+	@FXML private TableColumn<Student, String> nameColumn;
+	@FXML private TableColumn<Student, Integer> koreanColumn;
+	@FXML private TableColumn<Student, Integer> mathColumn;
+	@FXML private TableColumn<Student, Integer> englishColumn;
+
 	private ObservableList<Student> list;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		list = FXCollections.observableArrayList();
 		
-		TableColumn tc = tableView.getColumns().get(0);
-		tc.setCellValueFactory(new PropertyValueFactory("name"));
-		tc.setStyle("-fx-alignment: CENTER;");
-		
-		tc = tableView.getColumns().get(1);
-		tc.setCellValueFactory(new PropertyValueFactory("korean"));
-		tc.setStyle("-fx-alignment: CENTER;");
-		
-		tc = tableView.getColumns().get(2);
-		tc.setCellValueFactory(new PropertyValueFactory("math"));
-		tc.setStyle("-fx-alignment: CENTER;");
-		
-		tc = tableView.getColumns().get(3);
-		tc.setCellValueFactory(new PropertyValueFactory("english"));
-		tc.setStyle("-fx-alignment: CENTER;");
+		// 주입받은 필드를 직접 사용하여 CellValueFactory 설정 (강제 형변환 불필요)
+		nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+		nameColumn.setStyle("-fx-alignment: CENTER;");
+		koreanColumn.setCellValueFactory(new PropertyValueFactory<>("korean"));
+		koreanColumn.setStyle("-fx-alignment: CENTER;");
+		mathColumn.setCellValueFactory(new PropertyValueFactory<>("math"));
+		mathColumn.setStyle("-fx-alignment: CENTER;");
+		englishColumn.setCellValueFactory(new PropertyValueFactory<>("english"));
+		englishColumn.setStyle("-fx-alignment: CENTER;");
 		
 		tableView.setItems(list);
 		
@@ -57,7 +57,7 @@ public class RootController implements Initializable {
 			Stage dialog = new Stage(StageStyle.UTILITY);
 			dialog.initModality(Modality.WINDOW_MODAL);
 			dialog.initOwner(btnAdd.getScene().getWindow());
-			dialog.setTitle("�߰�");
+			dialog.setTitle("�߰�");
 		
 			Parent parent = FXMLLoader.load(getClass().getResource("form.fxml"));
 			
@@ -86,10 +86,3 @@ public class RootController implements Initializable {
 		} catch (IOException e) {}
 	}
 }
-
-
-
-
-
-
-
