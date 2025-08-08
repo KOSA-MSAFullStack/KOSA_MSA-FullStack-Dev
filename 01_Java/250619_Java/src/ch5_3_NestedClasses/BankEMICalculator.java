@@ -53,6 +53,8 @@ public class BankEMICalculator {
        System.out.println("Customer Name: " + customer.getCustomerName());
        System.out.println("Account Number: " + customer.getAccountNo());
        System.out.println("Monthly EMI Payment: $" + customer.getMonthlyPayment());
+
+       System.out.println(customer.loanAmount);
    }
 }
 

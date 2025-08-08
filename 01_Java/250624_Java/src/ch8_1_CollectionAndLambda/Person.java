@@ -18,6 +18,12 @@ public class Person {
        this.address = builder.address;       this.city = builder.city;
        this.state = builder.state;       this.code = builder.code;
    }
+   
+    public String getAddress() { return address; }
+    public String getCity() { return city; }
+    public String getState() { return state; }
+    public String getCode() { return code; }
+
    public String getGivenName() {       return givenName;   }
    public String getSurName() {       return surName;   }
    public int getAge() {       return age;   }

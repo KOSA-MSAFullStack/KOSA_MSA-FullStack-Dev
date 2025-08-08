@@ -36,6 +36,9 @@ public class Employee {
    public void setSsn(String ssn) {
        this.ssn = ssn;
    }
+   public String getSsn() {
+       return ssn;
+   }
    // Setter method to update employee salary
    public void setSalary(double salary) {
        this.salary = salary;

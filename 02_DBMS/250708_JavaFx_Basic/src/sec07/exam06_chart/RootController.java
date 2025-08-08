@@ -11,6 +11,8 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 
+import java.util.Arrays;
+
 public class RootController implements Initializable {
 	@FXML private PieChart pieChart;
 	@FXML private BarChart<String, Number> barChart;
@@ -30,20 +32,24 @@ public class RootController implements Initializable {
 		XYChart.Series<String, Number> series1 = new XYChart.Series<>();
 		series1.setName("남자");       
 		series1.setData(FXCollections.observableArrayList(
-			new XYChart.Data<String, Number>("2015", 70),
-			new XYChart.Data<String, Number>("2016", 40),
-			new XYChart.Data<String, Number>("2017", 50),
-			new XYChart.Data<String, Number>("2018", 30)
+			Arrays.asList( // Arrays.asList로 List를 먼저 생성
+				new XYChart.Data<String, Number>("2015", 70),
+				new XYChart.Data<String, Number>("2016", 40),
+				new XYChart.Data<String, Number>("2017", 50),
+				new XYChart.Data<String, Number>("2018", 30)
+        	)
 		));  
 		
-		////XYChart 데이터 설정
+		//XYChart 데이터 설정
 		XYChart.Series<String, Number> series2 = new XYChart.Series<>();
 		series2.setName("여자");       
 		series2.setData(FXCollections.observableArrayList(
-			new XYChart.Data<String, Number>("2015", 30),
-			new XYChart.Data<String, Number>("2016", 60),
-			new XYChart.Data<String, Number>("2017", 50),
-			new XYChart.Data<String, Number>("2018", 60)
+			Arrays.asList( // Arrays.asList로 List를 먼저 생성
+				new XYChart.Data<String, Number>("2015", 30),
+				new XYChart.Data<String, Number>("2016", 60),
+				new XYChart.Data<String, Number>("2017", 50),
+				new XYChart.Data<String, Number>("2018", 60)
+			)
 		));
 		
 		//BarChart 에 XYChart 데이터 삽입
@@ -54,10 +60,12 @@ public class RootController implements Initializable {
 		XYChart.Series<String, Number> series3 = new XYChart.Series<>();
 		series3.setName("평균 온돈");       
 		series3.setData(FXCollections.observableArrayList(
-			new XYChart.Data<String, Number>("2015", 13),
-			new XYChart.Data<String, Number>("2016", 6),
-			new XYChart.Data<String, Number>("2017", 22),
-			new XYChart.Data<String, Number>("2018", 19)
+			Arrays.asList( // Arrays.asList로 List를 먼저 생성
+				new XYChart.Data<String, Number>("2015", 13),
+				new XYChart.Data<String, Number>("2016", 6),
+				new XYChart.Data<String, Number>("2017", 22),
+				new XYChart.Data<String, Number>("2018", 19)
+			)
 		));
 		//AreaChart 에 XYChart 데이터 삽입
 		areaChart.getData().add(series3);
