@@ -22,8 +22,14 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/board/*")
 @AllArgsConstructor
 public class BoardController {  
+   
     @Autowired
     private BoardService service;
+   
+    @GetMapping("/register")
+    public void register() {
+               log.info( "register-----");
+    }
    
     @GetMapping("/list")
     public void list(Model model) {
@@ -40,10 +46,10 @@ public class BoardController {
         return "redirect:/board/list";      
     }
 
-    @GetMapping("/get")
+    @GetMapping({"/get","/modify"})
     public void get(@RequestParam("bno") Long bno, Model model) {
-        log.info("/get...");
-        model.addAttribute("board", service.get(bno));  
+        log.info("/get or Modify");
+        model.addAttribute("board", service.get(bno));
     }
    
     @PostMapping("/modify")
