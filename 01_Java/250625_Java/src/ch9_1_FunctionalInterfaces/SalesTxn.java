@@ -100,7 +100,6 @@ public class SalesTxn {
        private String paymentType;
        public Builder txnId(int txnId) {  
            this.txnId = txnId;  
-           System.out.println(txnId);
            return this;       
        }
        public Builder salesPerson(String salesPerson) {      
@@ -186,6 +185,7 @@ public class SalesTxn {
                ", SalesPerson=" + salesPerson +
                ", Buyer=" + buyer +
                ", State=" + state +
+               ", Date=" + date +
                ", product=" + product +
                ", paymentType=" + paymentType +
                ", getTransactionTotal=" + getTransactionTotal() +

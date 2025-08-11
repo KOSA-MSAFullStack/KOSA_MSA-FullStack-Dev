@@ -185,6 +185,7 @@ public class SalesTxn {
                ", SalesPerson=" + salesPerson +
                ", Buyer=" + buyer +
                ", State=" + state +
+               ", Date=" + date +
                ", product=" + product +
                ", paymentType=" + paymentType +
                ", getTransactionTotal=" + getTransactionTotal() +
