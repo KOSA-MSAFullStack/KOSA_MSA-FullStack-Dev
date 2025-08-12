@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    MyBatis MemberDAO 인터페이스의 SQL 매퍼 파일입니다.
+    회원 관련 데이터베이스 작업을 위한 SQL 쿼리를 정의합니다.
+-->
+<mapper namespace="net.developia.dao.MemberDAO">
+
+    <!--
+        로그인 처리를 위한 SQL 쿼리입니다.
+        주어진 ID와 비밀번호에 해당하는 회원 정보를 조회합니다.
+        일치하는 회원이 없으면 null을 반환합니다.
+    -->
+    <select id="login" parameterType="net.developia.dto.MemberDTO" resultType="net.developia.dto.MemberDTO">
+        SELECT id, name
+        FROM member
+        WHERE id = #{id} AND password = #{password}
+    </select>
+
+</mapper>
