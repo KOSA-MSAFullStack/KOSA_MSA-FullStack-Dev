@@ -3,15 +3,15 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!--
-    MyBatis MemberDAO 인터페이스의 SQL 매퍼 파일입니다.
-    회원 관련 데이터베이스 작업을 위한 SQL 쿼리를 정의합니다.
+    MyBatis MemberDAO 인터페이스의 SQL 매퍼 파일
+    회원 관련 DB 작업을 위한 SQL 쿼리 정의
 -->
 <mapper namespace="net.developia.dao.MemberDAO">
 
     <!--
-        로그인 처리를 위한 SQL 쿼리입니다.
-        주어진 ID와 비밀번호에 해당하는 회원 정보를 조회합니다.
-        일치하는 회원이 없으면 null을 반환합니다.
+        로그인 처리를 위한 SQL 쿼리
+        주어진 ID&비밀번호에 해당하는 회원 정보 조회
+        일치하는 회원 없으면 >> null 반환
     -->
     <select id="login" parameterType="net.developia.dto.MemberDTO" resultType="net.developia.dto.MemberDTO">
         SELECT id, name

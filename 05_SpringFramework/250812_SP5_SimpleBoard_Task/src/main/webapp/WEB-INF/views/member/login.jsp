@@ -10,8 +10,8 @@ pageEncoding="UTF-8"%>
     <h1>로그인</h1>
     <!--
         로그인 폼:
-        action="login"으로 설정되어 있어 현재 URL (예: /member/login)에 POST 요청을 보냅니다.
-        입력 필드 'id'와 'password'는 MemberDTO의 필드와 매핑됩니다.
+        action="login"으로 설정되어 있어 현재 URL(/member/login)에 POST 요청
+        입력 필드 'id'와 'password'는 MemberDTO 필드와 매핑
     -->
     <form action="login" method="post">
       <p>
