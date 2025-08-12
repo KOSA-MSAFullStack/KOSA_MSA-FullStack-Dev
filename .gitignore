@@ -39,6 +39,7 @@ out/
 # Eclipse
 .project
 .classpath
+.factorypath
 .settings/
 bin/
 .metadata/
