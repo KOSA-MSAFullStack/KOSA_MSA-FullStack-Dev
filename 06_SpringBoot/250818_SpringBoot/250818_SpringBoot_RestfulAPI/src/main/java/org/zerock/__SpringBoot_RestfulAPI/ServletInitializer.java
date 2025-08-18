@@ -1,4 +1,4 @@
-package org.zerock.__SpringBootPractice;
+package org.zerock.__SpringBoot_RestfulAPI;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
