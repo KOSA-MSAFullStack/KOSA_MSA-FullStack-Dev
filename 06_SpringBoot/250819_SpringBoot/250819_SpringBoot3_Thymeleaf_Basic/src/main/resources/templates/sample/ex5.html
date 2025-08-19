@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <title>Title</title>
+</head>
+<body>
+<!--  th:block -->
+<ul>
+   <th:block th:each="dto, state : ${list}">
+       <li th:text="${dto.sno % 5 ==0} ? ${dto.sno} : ${dto.first}  ">
+       </li>
+   </th:block>
+</ul>
+<!-- basic th:each & inline -->
+<hr>
+<ul>
+   <li th:each="dto, state : ${list}">
+       [[${dto.sno % 5 ==0} ? ${dto.sno} : ${dto.first} ]]
+   </li>
+</ul>
+
+</ul>
+</body>
+</html>
+
+

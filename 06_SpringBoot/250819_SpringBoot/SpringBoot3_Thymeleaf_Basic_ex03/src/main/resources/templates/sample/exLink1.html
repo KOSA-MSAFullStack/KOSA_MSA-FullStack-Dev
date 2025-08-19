@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <title>Title</title>
+</head>
+<body>
+<ul>
+   <li th:each="dto, state : ${list}">
+
+
+       <!--  <a href="/sample/exView" > Last..1 </a>      -->
+       <a th:href="@{/sample/exView}"> [[${dto.last}]] </a>
+   </li>
+</ul>
+
+
+</body>
+</html>
+
+
+
+
+

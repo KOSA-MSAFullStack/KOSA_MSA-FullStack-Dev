@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <title>Title</title>
+</head>
+<body>
+<ul>
+   <!--  ${list} 는 컨트롤러에서 전달된것   dto로 사용   -->
+   <li th:each="dto, state : ${list}">
+<!--  sno가 5로 나눈 나머지가 0인 경우에는 sno 만 출력하고 그렇지 않다면 SampleDTO의 first를 출력    -->
+     <span th:if="${dto.sno % 5 == 0 }"
+           th:text="${'-----------' + dto.sno}">
+     </span>
+     <span th:unless="${dto.sno % 5 == 0 }"
+             th:text="${dto.first}">
+     </span>
+   </li>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th=http://www.thymeleaf.org
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+		<caption>게시물 상세보기</caption>
+		<tr>
+			<th>글번호</th>
+			<td th:text="${articleDTO.no}" />
+		</tr>
+		<tr>
+			<th>제목</th>
+			<td th:text="${articleDTO.title}" />
+		</tr>
+		<tr>
+			<th>이름</th>
+			<td th:text="${articleDTO.name}" />
+		</tr>
+		<tr>
+			<th>내용</th>
+			<td th:text="${articleDTO.content}" />
+		</tr>
+		<tr>
+			<th>작성일</th>
+			<td
+				th:text="${#calendars.format(articleDTO.regdate, 'yyyy-MM-dd HH:mm:ss')}" />
+		</tr>
+		<tr>
+			<th>조회수</th>
+			<td th:text="${articleDTO.readcount}" />
+		</tr>
+	</table>
+	<br />
+	<a th:href="@{update(no=${articleDTO.no})}" th:text="수정" /> |
+	<a th:href="@{delete(no=${articleDTO.no})}" th:text="삭제" /> |
+	<a th:href="@{list}" th:text="리스트" />
+</body>
+</html>
+

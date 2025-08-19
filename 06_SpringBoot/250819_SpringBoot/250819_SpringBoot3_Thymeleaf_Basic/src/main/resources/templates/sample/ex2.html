@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <title>Title</title>
+</head>
+<body>
+<ul>
+   <li th:each="dto : ${list}">
+       [[${dto}]]
+   </li>
+</ul>
+
+<h1> 없으면 그냥 문자 출력</h1>
+<hr>
+<ul>
+   <li th:each="dto : ${list}">
+       ${dto}
+   </li>
+</ul>
+
+</body>
+</html>
+
+

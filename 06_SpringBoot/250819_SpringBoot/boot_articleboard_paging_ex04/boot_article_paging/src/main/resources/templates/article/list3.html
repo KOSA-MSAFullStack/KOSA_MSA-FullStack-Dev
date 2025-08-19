@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko"
+ xmlns:th=http://www.thymeleaf.org
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>게시물</title>
+</head>
+<body>
+<table border="1">
+	<caption>게시물 리스트</caption>
+	<tr>
+		<th>번호</th>
+		<th>제목</th>
+		<th>이름</th>
+		<th>날짜</th>
+		<th>조회수</th>
+	</tr>
+	<tr th:if="${not #lists.isEmpty(list)}" th:each="dto: ${list}">
+		<td th:text="${dto.no}" />
+		<td><a th:href="@{detail(no=${dto.no})}" th:text="${dto.title}" /></td>
+		<td th:text="${dto.name}" />
+		<td th:text="${#calendars.format(dto.regdate, 'yyyy-MM-dd')}" />
+		<td th:text="${dto.readcount}" />
+	</tr>
+</table><br/> 
+<!-- 페이지 번호 처리 -->
+<div >
+    <ul style="list-style-type: none; padding: 0;">
+        
+        <!-- 이전 버튼 -->
+        <li style="display: inline; margin-right: 10px;"th:if="${pageMaker.prev}" >
+            <a th:href="@{/list3(pageNum=${pageMaker.startPage - 1}, amount=${pageMaker.cri.amount})}">Previous</a>
+        </li>
+        
+        <!-- 1~10 버튼 -->
+        <li style="display: inline; margin-right: 10px;"th:each="num: ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}" class="paginate_button">
+            <a th:href="@{/list3(pageNum=${num}, amount=${pageMaker.cri.amount})}" th:text="${num}"></a>
+        </li>
+
+        <!-- 다음 버튼 -->
+        <li th:if="${pageMaker.next}" >
+            <a th:href="@{/list3(pageNum=${pageMaker.endPage + 1}, amount=${pageMaker.cri.amount})}">Next</a>
+        </li>
+        
+    </ul> <!--end ul-->
+</div> <!-- end Pagination -->
+
+<form id='actionForm' action="/list3" th:action="@{/list3}" method='get'>
+    <input type='hidden' name='pageNum' th:value="${pageMaker.cri.pageNum}">
+    <input type='hidden' name='amount' th:value="${pageMaker.cri.amount}">
+</form>
+<!-- 페이지 번호 처리 끝 -->
+
+
+<a href="insert">글쓰기</a>
+</body>
+</html>

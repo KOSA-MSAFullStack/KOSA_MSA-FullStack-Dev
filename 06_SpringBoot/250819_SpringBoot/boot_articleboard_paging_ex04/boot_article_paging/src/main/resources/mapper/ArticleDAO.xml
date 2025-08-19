@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.developia.boot_article.dao.ArticleDAO">
+
+	<select id="getListWithPaging2"
+		resultType="net.developia.boot_article.dto.ArticleDTO">  
+  <![CDATA[
+        select 
+                 *
+          from (
+               select
+                /*+ INDEX_DESC(tbl_board pk_board)*/
+                rownum rn, no,name,title,content,regdate,readcount
+                from article
+                  where rownum <=  #{pageNum}  *  #{amount}
+              )
+      where rn > (  #{pageNum}  -  1  )  *   #{amount}             
+   ]]>
+	</select>
+
+
+	<insert id="insertArticle" parameterType="ArticleDTO">
+		insert into article(no,
+		name, title, content, password)
+		values(s_article.nextval, #{name},
+		#{title}, #{content}, #{password} )
+	</insert>
+
+	<select id="getArticleList" resultType="ArticleDTO">
+		SELECT no
+		,title,name,regdate,readcount
+		FROM article
+		ORDER BY no DESC
+	</select>
+	
+	<select id="totalCount" resultType="int">
+		SELECT COUNT(*)
+		FROM article
+	</select>
+
+	<select id="getDetail" parameterType="long"
+		resultType="ArticleDTO">
+		SELECT no,title,name,regdate,readcount,content
+		FROM article
+		WHERE no=#{no}
+	</select>
+
+	<delete id="deleteArticle" parameterType="ArticleDTO">
+		DELETE article
+		WHERE
+		no=#{no}
+		AND password=#{password}
+	</delete>
+
+	<update id="updateArticle" parameterType="ArticleDTO">
+		update article set
+		name
+		=#{name}
+		,title =#{title}
+		,content=#{content}
+		where no=#{no} and
+		password=#{password}
+	</update>
+
+
+	<select id="getListWithPaging"
+		resultType="net.developia.boot_article.dto.ArticleDTO">
+		SELECT * FROM (
+		SELECT A.*,
+		ROWNUM AS RNUM,
+		FLOOR((ROWNUM-1)/
+		5 + 1) AS PAGE,
+		COUNT(*) OVER() AS TOTCNT FROM (
+		select * from article
+		)
+		A
+		) WHERE PAGE = #{page}
+	</select>
+
+</mapper>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <title>Title</title>
+</head>
+<body>
+<ul>
+<!--  ${list} 는 컨트롤러에서 전달된것   dto로 사용   -->
+   <li th:each="dto, state : ${list}">
+       인덱스 :  [[${state.index}]] <br>
+       전체 list 출력 : [[${dto}]] <br>
+       일부 list 출력 : [[${dto.first}]] <br>
+       전체 갯수 : [[${state.count}]] <br>
+   </li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.developia.boot_article.dao.ArticleDAO">
+
+	<insert id="insertArticle" parameterType="ArticleDTO">
+		insert into
+		article(name, title, content, password)
+		values( #{name},#{title},#{content}, #{password} )
+	</insert>
+
+	<select id="getArticleList" resultType="ArticleDTO">
+		SELECT no,title,name,regdate,readcount
+		FROM article
+		ORDER BY no DESC
+	</select>
+
+	<select id="getDetail" parameterType="long"
+		resultType="ArticleDTO">
+		SELECT no,title,name,regdate,readcount,content
+		FROM article
+		WHERE no=#{no}
+	</select>
+
+	<delete id="deleteArticle" parameterType="ArticleDTO">
+		DELETE article
+		WHERE no=#{no}
+		AND password=#{password}
+	</delete>
+
+	<update id="updateArticle" parameterType="ArticleDTO">
+		update article 
+		set	name =#{name}
+		,title =#{title}
+		,content=#{content}
+		where no=#{no} and 	password=#{password}
+	</update>
+
+</mapper>
