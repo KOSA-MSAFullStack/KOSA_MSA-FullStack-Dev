@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.club.dao.ClubMemberDao">
+
+<insert id="insertClubMember">
+insert into club_member
+(email,from_social,name,password)
+values(#{email},#{from_social},#{name},#{password})
+</insert>
+
+
+<insert id="insertClubRoleSet" >
+insert into club_member_role_set
+(club_member_email,role_set)
+values(#{club_member_email},#{role_set})
+</insert>
+
+<select id="findByEmail" resultType="org.zerock.club.dto.ClubMember2">
+select
+email, c1.moddate, regdate, c1.from_social, name, password,c2.role_set
+from
+club_member c1 join club_member_role_set c2
+on c1.email = c2.club_member_email
+where c1.email = #{email} and c1.from_social=#{social}
+</select>
+
+
+</mapper>
