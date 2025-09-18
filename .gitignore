@@ -46,10 +46,11 @@ bin/
 
 
 # ========================================
-# 
+# key
 # ========================================
 04_JavaWeb/250731_JavaWeb/jQuery_Ajax_open_api_JSON/Google_Map/구글_지도_api키.txt
 05_SpringFramework/250813_aws-s3-upload/src/main/resources/aws.properties
+06_SpringBoot\250822_SpringBoot\club-7-4_24_3_16\club\src\main\resources\application-oauth.properties
 
 
 # ========================================
