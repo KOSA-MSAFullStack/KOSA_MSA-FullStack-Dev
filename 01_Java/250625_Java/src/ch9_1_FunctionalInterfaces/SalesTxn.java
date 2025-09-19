@@ -88,7 +88,6 @@ public class SalesTxn {
     * Builder class to construct SalesTxn objects.
     */
    public static class Builder {
-       private int txnId;
        private String salesPerson;
        private Buyer buyer;
        private State state;
@@ -99,7 +98,6 @@ public class SalesTxn {
        private String product;
        private String paymentType;
        public Builder txnId(int txnId) {  
-           this.txnId = txnId;  
            return this;       
        }
        public Builder salesPerson(String salesPerson) {      

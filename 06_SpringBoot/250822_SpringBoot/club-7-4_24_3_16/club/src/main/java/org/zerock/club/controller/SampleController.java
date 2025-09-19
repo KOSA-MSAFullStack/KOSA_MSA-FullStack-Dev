@@ -3,7 +3,6 @@ package org.zerock.club.controller;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +13,6 @@ import org.zerock.club.security.dto.ClubAuthMemberDTO;
 @Controller
 @Log4j2
 @RequestMapping("/sample/") // @PreAuthorize 사용 가능 하게 세팅
-@EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true)
 public class SampleController {
 
 

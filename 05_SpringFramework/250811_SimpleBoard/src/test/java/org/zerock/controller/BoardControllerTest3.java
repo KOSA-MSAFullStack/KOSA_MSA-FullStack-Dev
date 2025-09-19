@@ -2,6 +2,8 @@
 
 package org.zerock.controller;
 
+import java.util.Objects;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,12 +38,13 @@ public class BoardControllerTest3 {
     @Test
     public void testGet() throws Exception {
         log.info(
+            Objects.requireNonNull(
                 mockMvc.perform(
                 MockMvcRequestBuilders.get("/board/get")
                 .param("bno", "1")              
                 ).andReturn()
                 .getModelAndView()
-                .getModelMap()
-                );      
+            ).getModelMap()
+        );      
     }
 }

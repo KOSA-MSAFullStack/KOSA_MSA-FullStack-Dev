@@ -2,6 +2,8 @@
 
 package org.zerock.controller;
 
+import java.util.Objects;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,15 +40,16 @@ public class BoardControllerTest2 {
     @Test
     public void testRegister() throws Exception {
        
-        String resultPage = mockMvc.perform(
+        String resultPage = 
+        Objects.requireNonNull(
+            mockMvc.perform(
                 MockMvcRequestBuilders.post("/board/register")
                 .param("title", "새글 테스트 제목")
                 .param("content", "테스트 새글 내용")
                 .param("writer", "user00")
                 ).andReturn()
                 .getModelAndView()
-                .getViewName()
-                ;
+                ).getViewName();
         log.info(resultPage);      
     }
 }

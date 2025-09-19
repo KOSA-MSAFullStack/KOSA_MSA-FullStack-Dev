@@ -1,5 +1,7 @@
 package org.zerock.controller;
 
+import java.util.Objects;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,12 +36,14 @@ public class BoardControllerTest4 {
     @Test
     public void modiftTest() throws Exception {
         String resultPage =
+            Objects.requireNonNull(
                 mockMvc.perform(MockMvcRequestBuilders.post("/board/modify")
                         .param("bno", "1")
                         .param("title", "수정된 테스트 새글")
                         .param("content", "수정된 테스트 새글 내용")
                         .param("writer", "user00")
-                        ).andReturn().getModelAndView().getViewName();
+                        ).andReturn().getModelAndView()
+            ).getViewName();
         log.info(resultPage);
     }
 }

@@ -1,6 +1,5 @@
 package net.developia.boot_article.dto;
 
-import java.io.Serializable;
 import java.util.Date;
 import org.apache.commons.codec.digest.DigestUtils;
 

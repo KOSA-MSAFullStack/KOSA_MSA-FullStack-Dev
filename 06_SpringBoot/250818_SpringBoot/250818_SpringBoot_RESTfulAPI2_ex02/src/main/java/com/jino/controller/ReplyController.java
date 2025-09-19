@@ -6,8 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.jino.service.ReplyService;
-import lombok.Setter;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
 import com.jino.DTO.ReplyDTO;
 

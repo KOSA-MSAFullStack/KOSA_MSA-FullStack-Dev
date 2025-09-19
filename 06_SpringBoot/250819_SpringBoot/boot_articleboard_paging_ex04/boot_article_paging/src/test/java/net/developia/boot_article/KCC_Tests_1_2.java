@@ -20,7 +20,6 @@ public class KCC_Tests_1_2 {
 		try {
 			System.out.println( mapper.totalCount() );
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}//end void

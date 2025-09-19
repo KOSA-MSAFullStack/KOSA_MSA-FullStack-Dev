@@ -2,6 +2,8 @@
 
 package org.zerock.controller;
 
+import java.util.Objects;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,12 +40,13 @@ public class BoardControllerTest5 {
     public void testList() throws Exception {
         //삭제 테스트 전  DB에서 TBL_BOARD 조회에서 데이터 있는 지 확인
         String resultPage=
+            Objects.requireNonNull(
                 mockMvc.perform(
                 MockMvcRequestBuilders.post("/board/remove")
                 .param("bno", "5")
                 ).andReturn()
                 .getModelAndView()
-                .getViewName();            
+            ).getViewName();            
         log.info(resultPage);      
     }
 }

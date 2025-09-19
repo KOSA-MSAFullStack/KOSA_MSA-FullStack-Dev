@@ -20,7 +20,7 @@ public class MemoRepositoryTests4 {
    @Test
    public void testSelect2(){
        Long mno = 100l; //데이터베이스에 존재하는  mno 열 값
-       Memo memo = memoRepository.getById(mno);
+       Memo memo = memoRepository.getReferenceById(mno);
        Memo memo2 = memoRepository.getReferenceById(mno);
 
 

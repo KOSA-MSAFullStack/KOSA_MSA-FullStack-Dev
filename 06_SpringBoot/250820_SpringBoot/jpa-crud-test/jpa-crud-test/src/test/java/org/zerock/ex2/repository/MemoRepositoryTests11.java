@@ -9,8 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.zerock.ex2.entity.Memo;
 
-import java.util.List;
-
 
 @SpringBootTest
 public class MemoRepositoryTests11 {

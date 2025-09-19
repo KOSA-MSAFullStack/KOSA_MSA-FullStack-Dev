@@ -6,88 +6,91 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+
 import org.zerock.club.security.handler.ClubLoginSuccessHandler;
 import org.zerock.club.security.service.ClubOAuth2UserDetailsService;
 import org.zerock.club.security.service.ClubUserDetailsService;
-import org.zerock.club.security.service.OAuth2MemberService;
+
+import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @Log4j2
 public class SecurityConfig {
-	// 순서 중요
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}// end pass..
-		// ClubLoginSuccessHandler 등록
-		// ClubLoginSuccessHandler 등록
 
-	@Bean
-	public ClubLoginSuccessHandler successHandler() {
-		return new ClubLoginSuccessHandler(passwordEncoder());
-	}// end CLu..
+    /** 비밀번호 암호화 Bean */
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-	@Autowired
-	@Lazy
-	private ClubOAuth2UserDetailsService clubOAuth2UserDetailsService;
+    /** 로그인 성공 핸들러 Bean */
+    @Bean
+    public ClubLoginSuccessHandler successHandler() {
+        return new ClubLoginSuccessHandler(passwordEncoder());
+    }
 
-	@Autowired
-	private OAuth2MemberService oAuth2MemberService;
-	
-   @Autowired
-   private ClubUserDetailsService clubUserDetailsService;
+    @Autowired
+    @Lazy
+    private ClubOAuth2UserDetailsService clubOAuth2UserDetailsService;
 
-	// 권한 계층 설정을 위한 Bean 등록
-	@Bean
-	public RoleHierarchyImpl roleHierarchy() {
-		RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
-		// 'ROLE_ADMIN'은 'ROLE_USER'의 권한도 포함한다는 설정
-		roleHierarchy.setHierarchy("ROLE_ADMIN > ROLE_MANAGER > ROLE_USER");
-		return roleHierarchy;
-	}
+    @Autowired
+    private ClubUserDetailsService clubUserDetailsService;
 
-	@Bean
-	public WebSecurityCustomizer webSecurityCustomizer() throws Exception {
-		// 이미지,JS파일 리소스 사용가능하게함
-		return (web) -> web.ignoring().requestMatchers("/static/**");
-	}
+    /** 권한 계층 구조 설정 (최신 방식) */
+    @Bean
+    public RoleHierarchyImpl roleHierarchy() {
+        return RoleHierarchyImpl.fromHierarchy("""
+            ROLE_ADMIN > ROLE_MANAGER
+            ROLE_MANAGER > ROLE_USER
+        """);
+    }
 
-	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		
-		// /samle/all 모든 사용자 가능
-		// /sample/member USER 롤 사용자만
-		/*
-		 * http.authorizeRequests().requestMatchers("/samle/all").permitAll().
-		 * requestMatchers("/sample/member") .hasRole("USER").and().formLogin(); // 인가
-		 * 인증 문제시 로그인 화면
-		 */		
-		
-		http.authorizeRequests()
-         .requestMatchers("/sample/member").hasRole("USER")
-         .and().formLogin(); //인가 인증 문제시 로그인 화면
+    /** 정적 리소스 보안 필터 제외 */
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring().requestMatchers("/static/**");
+    }
 
-		// crsf 비활성화
-		http.csrf().disable();
-		// 로그 아웃 세팅
-		http.logout();
+    /** Spring Security 필터 체인 설정 */
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-		// 구글 oauth 인증 추가
-		http.oauth2Login().userInfoEndpoint()// 로그인 완료 후 회원 정보 받기
-				.userService(clubOAuth2UserDetailsService) // 서비스 변경
-				.and().successHandler(successHandler()); // 핸들러 등록
-		
-       //일반 from 로그인 rememberMe 설정
-       http.rememberMe()  //7day
-               .tokenValiditySeconds( 60 * 60 * 24 * 7)
-               .userDetailsService(clubUserDetailsService);
+        http
+            // 인가(Authorization) 설정
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/sample/all").permitAll()          // 누구나 접근 가능
+                .requestMatchers("/sample/member").hasRole("USER")   // USER 권한 필요
+                .anyRequest().authenticated()                       // 나머지는 인증 필요
+            )
 
+            // 로그인 설정 (기본 로그인 폼)
+            .formLogin(withDefaults())
 
-		return http.build();
-	}
-}// end class
+            // CSRF 비활성화
+            .csrf(csrf -> csrf.disable())
+
+            // 로그아웃 설정
+            .logout(withDefaults())
+
+            // OAuth2 로그인 설정
+            .oauth2Login(oauth2 -> oauth2
+                .userInfoEndpoint(userInfo -> 
+                    userInfo.userService(clubOAuth2UserDetailsService) // OAuth2 사용자 정보 서비스
+                )
+                .successHandler(successHandler()) // 로그인 성공 핸들러
+            )
+
+            // Remember-Me 설정 (7일간 유지)
+            .rememberMe(remember -> remember
+                .tokenValiditySeconds(60 * 60 * 24 * 7)
+                .userDetailsService(clubUserDetailsService)
+            );
+
+        return http.build();
+    }
+}
