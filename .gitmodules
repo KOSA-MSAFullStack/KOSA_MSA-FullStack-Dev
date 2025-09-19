@@ -1,3 +1,6 @@
 [submodule "03_1stProject/TeamBread"]
 	path = 03_1stProject/TeamBread
 	url = https://github.com/Kosa-Team-Bread/TeamBread.git
+[submodule "07_2ndProject/2ndProject_Magnifier"]
+	path = 07_2ndProject/2ndProject_Magnifier
+	url = https://github.com/KOSA-MSAFullStack/2ndProject_Magnifier.git
