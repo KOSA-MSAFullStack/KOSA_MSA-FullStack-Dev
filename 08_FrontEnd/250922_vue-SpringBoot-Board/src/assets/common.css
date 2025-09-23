@@ -1,0 +1,33 @@
+/* common.css */
+
+
+/* .board-list 클래스 스타일 정의 */
+.board-list {
+    width: 768px;   /* 너비를 768px로 설정 */
+    margin: auto;   /* 가로 방향 중앙 정렬 */
+}
+
+
+/* .board-detail 클래스 스타일 정의 */
+.board-detail {
+    width: 768px;      /* 너비를 768px로 설정 */
+    margin: auto;      /* 가로 방향 중앙 정렬 */
+    text-align: left;  /* 텍스트를 왼쪽 정렬 */
+}
+
+
+/* .board-contents 클래스 스타일 정의 */
+.board-contents {
+    padding: 12px 8px;                     /* 상하 12px, 좌우 8px의 내부 여백 설정 */
+    border-bottom: 1px solid #eee;         /* 아래쪽에 1px의 연한 회색(#eee) 테두리 설정 */
+}
+
+
+/* .common-buttons 클래스 스타일 정의 */
+.common-buttons {
+    padding: 8px;          /* 8px의 내부 여백 설정 */
+    text-align: right;     /* 텍스트를 오른쪽 정렬 */
+}
+
+
+

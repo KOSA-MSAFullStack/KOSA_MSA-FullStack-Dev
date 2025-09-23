@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <!-- 문서의 문자 인코딩을 설정 -->
+    <meta charset="utf-8">
+    <!-- IE 브라우저에서 최신 렌더링 엔진을 사용하도록 설정 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 뷰포트 메타 태그로 반응형 웹 디자인을 지원 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- 사이트 아이콘 설정 -->
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <!-- 외부 CSS 파일 적용 -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- 페이지 제목 설정 -->
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <!-- 자바스크립트가 비활성화된 경우 경고 메시지를 표시 -->
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <!-- Vue 애플리케이션이 마운트될 요소 -->
+    <div id="app"></div>
+    <!-- 빌드된 파일들이 자동으로 삽입될 예정 -->
+  </body>
+</html>
+
