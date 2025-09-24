@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chat Interface</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .chat-container { max-width: 600px; margin: 0 auto; }
+        .chat-box { border: 1px solid #ddd; padding: 20px; border-radius: 5px; }
+        .chat-input { margin-top: 10px; display: flex; }
+        input[type="text"] { flex: 1; padding: 8px; border-radius: 5px; border: 1px solid #ddd; }
+        button { padding: 8px 12px; border-radius: 5px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        .chat-response { margin-top: 15px; font-style: italic; color: #555; }
+    </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+
+</head>
+<body>
+    <div class="chat-container">
+        <h2>Ask Anything</h2>
+        <div class="chat-box">
+            <form action="#" th:action="@{/askAnything}" th:method="post">
+                <div class="chat-input">
+                    <input type="text" name="question" placeholder="Type your question here..."
+                           th:value="${question}" required />
+                    <button type="submit">Send</button>
+                </div>
+            </form>
+            <div class="chat-response" th:if="${answer}">
+                <p><strong>Question:</strong> <span th:text="${question}"></span></p>
+                <p><strong>Answer:</strong> <span id="markdown-content" th:text="${answer}" style="display: none;"></span></p>
+            </div>
+             <div id="rendered-html"></div>
+        </div>
+    </div>
+    
+        <!-- JavaScript to Convert Markdown to HTML -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Retrieve Markdown content
+            var markdownContent = document.getElementById("markdown-content").innerText;
+            
+            // Initialize Showdown converter
+            var converter = new showdown.Converter();
+            
+            // Convert Markdown to HTML
+            var htmlContent = converter.makeHtml(markdownContent);
+            
+            // Render the converted HTML
+            document.getElementById("rendered-html").innerHTML = htmlContent;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cuisine Helper</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; padding-top: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { font-weight: bold; display: block; margin-bottom: 5px; }
+        input[type="text"], input[type="number"] { width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ddd; }
+        button { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .response { margin-top: 30px; padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 4px; }
+        .response h3 { color: #4CAF50; font-size: 1.5em; }
+        .cuisine-list { margin-top: 15px; }
+        .cuisine-list li { margin-bottom: 10px; }
+        .cuisine-title { font-weight: bold; color: #333; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>나라별 요리를 발견해보세요</h2>
+        <form action="#" th:action="@{/cuisineHelper}" th:method="post">
+            <div class="form-group">
+                <label for="country">나라를 입력하세요:</label>
+                <input type="text" id="country" name="country" placeholder="E.g., Japan, Italy, Mexico" required>
+            </div>
+            <div class="form-group">
+                <label for="numCuisines">요리 개수:</label>
+                <input type="number" id="numCuisines" name="numCuisines" min="1" placeholder="E.g., 5" required>
+            </div>
+            <div class="form-group">
+                <label for="language">Language:</label>
+                <input type="text" id="language" name="language" placeholder="E.g., English, Spanish" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="response" th:if="${countryCuisines}">
+            <h3>Popular Cuisines in <span th:text="${countryCuisines.country}"></span>:</h3>
+            <ul class="cuisine-list">
+                <!-- Iterating over the list of cuisines and adding index manually -->
+                <li th:each="cuisine, index : ${countryCuisines.cuisines}">
+                    <span th:text="${cuisine}"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
