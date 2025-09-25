@@ -7,6 +7,7 @@ Thumbs.db
 *.log
 *.bak
 *.swp
+HELP.md
 .vscode/
 .cursor/
 
@@ -34,6 +35,7 @@ target/
 .idea/
 *.iml
 *.iws
+*.ipr
 out/
 
 # Eclipse
@@ -43,6 +45,24 @@ out/
 .settings/
 bin/
 .metadata/
+
+# STS
+.apt_generated
+.springBeans
+.sts4-cache
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Gradle
+build/
+
+# Maven Wrapper
+!.mvn/wrapper/maven-wrapper.jar
 
 # ========================================
 # Gemini 참고 폴더 제외
