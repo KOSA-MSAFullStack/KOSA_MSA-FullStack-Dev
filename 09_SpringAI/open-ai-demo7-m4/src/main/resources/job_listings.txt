@@ -1,0 +1,50 @@
+1. Software Engineer - Backend Development
+Location: San Francisco, CA
+Description: We are looking for a backend software engineer to build and maintain web applications. The role requires expertise in Python, Django, and RESTful API development. Familiarity with SQL and database management is a plus.
+Requirements: 2+ years of experience in backend development, proficiency in Python and Django, knowledge of REST APIs, and basic SQL skills.
+
+2. Data Scientist - Machine Learning
+Location: New York, NY
+Description: Join our team to analyze data, build predictive models, and optimize processes. We seek a candidate skilled in Python, machine learning frameworks (e.g., TensorFlow, PyTorch), and data visualization. Experience with SQL and statistical analysis is preferred.
+Requirements: 3+ years of experience in data science, proficiency in machine learning, Python skills, and experience with SQL databases.
+
+3. Product Manager - Mobile Applications
+Location: Remote
+Description: We need an experienced product manager to oversee mobile application development. This role involves managing cross-functional teams, defining product roadmaps, and ensuring product quality. Familiarity with Agile methodologies is required, along with strong communication skills.
+Requirements: 4+ years of experience in product management, experience with mobile applications, and knowledge of Agile methodologies.
+
+4. UX/UI Designer
+Location: Austin, TX
+Description: Seeking a creative UX/UI designer to design engaging, user-friendly interfaces for web and mobile applications. Proficiency in tools like Figma, Sketch, and Adobe Creative Suite is required. Experience in user research and wireframing is a plus.
+Requirements: 2+ years of experience in UX/UI design, proficiency in Figma or Sketch, and strong portfolio showcasing design skills.
+
+5. Cloud Engineer - AWS Specialist
+Location: Seattle, WA
+Description: We are looking for a cloud engineer with expertise in AWS to design and implement scalable cloud infrastructure solutions. The ideal candidate has experience with AWS services, DevOps, and infrastructure automation tools like Terraform and Ansible.
+Requirements: 3+ years of experience in cloud engineering, proficiency in AWS, and experience with Terraform or Ansible.
+
+6. Full Stack Developer
+Location: Chicago, IL
+Description: We seek a full stack developer with skills in JavaScript, React, Node.js, and MongoDB to build and maintain web applications. Experience with REST APIs and cloud deployment is advantageous.
+Requirements: 3+ years of experience in full stack development, proficiency in React and Node.js, and familiarity with MongoDB and REST APIs.
+
+7. Marketing Specialist - Digital Campaigns
+Location: Remote
+Description: The ideal candidate will manage and optimize digital marketing campaigns, focusing on social media, SEO, and paid advertising. Strong analytical skills and experience with Google Analytics and AdWords are required.
+Requirements: 2+ years of experience in digital marketing, proficiency in SEO, social media management, and knowledge of Google Analytics.
+
+8. Business Analyst - Financial Sector
+Location: Boston, MA
+Description: We are looking for a business analyst with experience in the financial sector to analyze business processes, create reports, and support project management. Familiarity with SQL and data analysis tools is a plus.
+Requirements: 2+ years of experience in business analysis, experience in the financial sector, and SQL skills.
+
+9. Frontend Developer - React Specialist
+Location: Los Angeles, CA
+Description: Seeking a frontend developer with strong React skills to create engaging, responsive web interfaces. Knowledge of JavaScript, HTML, and CSS is required. Experience with design frameworks like Bootstrap is a plus.
+Requirements: 2+ years of experience in frontend development, proficiency in React, and knowledge of HTML and CSS.
+
+10. AI Engineer - Natural Language Processing
+Location: Remote
+Description: Join our team to work on NLP projects and develop intelligent language-based applications. Skills in Python, NLP libraries (e.g., NLTK, SpaCy), and experience with deep learning frameworks are preferred.
+Requirements: 2+ years of experience in AI/NLP, proficiency in Python, and experience with deep learning.
+
