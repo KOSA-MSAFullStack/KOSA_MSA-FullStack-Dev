@@ -56,7 +56,13 @@ public class ImageAnalyzerController { // 이미지 분석 컨트롤러 클래�
                 Files.createDirectories(uploadDir); // 디렉터리 생성
             } // 디렉터리 생성 분기 종료
 
-            String cleanedFilename = StringUtils.cleanPath(file.getOriginalFilename()); // 파일명 정규화(불필요한 경로 요소 제거)
+            String originalFilename = file.getOriginalFilename();
+            if (originalFilename == null || originalFilename.isBlank()) {
+                model.addAttribute("message", "Invalid file: missing filename");
+                return "imageAnalyzer";
+            }
+
+            String cleanedFilename = StringUtils.cleanPath(originalFilename); // 파일명 정규화(불필요한 경로 요소 제거)
             if (cleanedFilename.contains("..")) { // 경로 역참조 방지 검사
                 model.addAttribute("message", "Invalid file name"); // 유효하지 않은 파일명 메시지
                 return "imageAnalyzer"; // 폼 페이지로 반환

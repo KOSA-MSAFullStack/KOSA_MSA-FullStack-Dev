@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Speech to Text (OpenAI)</title>
+    <meta charset="UTF-8">
+    <style>
+        /* ===== 기본 스타일 ===== */
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 720px; margin: 0 auto; padding-top: 20px; }
+        .form-group { margin-bottom: 16px; }
+        label { font-weight: bold; display: block; margin-bottom: 6px; }
+        input[type="file"], input[type="text"], select {
+            width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ddd;
+        }
+        button {
+            padding: 10px 15px; background-color: #4CAF50; color: white;
+            border: none; border-radius: 4px; cursor: pointer;
+        }
+        .response {
+            margin-top: 20px; padding: 15px; background-color: #f9f9f9;
+            border: 1px solid #ddd; border-radius: 4px;
+        }
+        pre { white-space: pre-wrap; word-wrap: break-word; }
+        audio { width: 100%; margin-top: 10px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Upload an Audio to Transcribe</h2>
+
+    <!-- 음성 파일 업로드 폼 -->
+    <form th:action="@{/speechToText}" method="post" enctype="multipart/form-data">
+        <!-- Spring Security 사용 시 CSRF 토큰 (선택) -->
+        <!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"> -->
+
+        <!-- 언어 선택 (컨트롤러 @RequestParam("lan")와 매핑됨) -->
+        <div class="form-group">
+            <label for="lan">Language</label>
+            <select id="lan" name="lan" required>
+                <option value="ko" selected>Korean (ko)</option>
+                <option value="en">English (en)</option>
+                <option value="ja">Japanese (ja)</option>
+                <option value="zh">Chinese (zh)</option>
+            </select>
+        </div>
+
+        <!-- 파일 선택 영역 -->
+        <div class="form-group">
+            <label for="file">Select Audio (mp3, mp4, mpeg, mpga, m4a, wav, webm)</label>
+            <!-- OpenAI Whisper가 지원하는 확장자 반영 -->
+            <input type="file"
+                   id="file"
+                   name="file"
+                   accept=".mp3,.mp4,.mpeg,.mpga,.m4a,.wav,.webm"
+                   required>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- 업로드 실패나 안내 메시지 출력 -->
+    <div class="response" th:if="${message}">
+        <p th:text="${message}"></p>
+    </div>
+
+    <!-- 업로드한 오디오 미리듣기 (컨트롤러에서 모델에 audioUrl 내려줄 때) -->
+    <div class="response" th:if="${audioUrl}">
+        <h3>Preview</h3>
+        <audio controls th:src="${audioUrl}"></audio>
+    </div>
+
+    <!-- 변환된 텍스트(VTT) 출력 (줄바꿈 보존 위해 <pre> 사용) -->
+    <div class="response" th:if="${transcription}">
+        <h3>Transcribed Text (VTT)</h3>
+        <pre th:text="${transcription}"></pre>
+    </div>
+</div>
+
+<!-- 파일 선택 즉시 브라우저에서 미리듣기 (선택 기능) -->
+<script>
+    // 사용자가 파일을 선택하면, 메모리 URL로 <audio>에 바인딩하여 로컬 미리듣기 지원
+    const fileInput = document.getElementById('file');
+    fileInput?.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const url = URL.createObjectURL(file);
+
+        // 기존 미리듣기 없으면 동적으로 생성
+        let preview = document.querySelector('#local-audio-preview');
+        if (!preview) {
+            const wrap = document.createElement('div');
+            wrap.className = 'response';
+            const h = document.createElement('h3');
+            h.textContent = 'Local Preview';
+            preview = document.createElement('audio');
+            preview.id = 'local-audio-preview';
+            preview.controls = true;
+            wrap.appendChild(h);
+            wrap.appendChild(preview);
+            document.querySelector('.container').appendChild(wrap);
+        }
+        preview.src = url;
+    });
+</script>
+</body>
+</html>
