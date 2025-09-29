@@ -1,0 +1,290 @@
+<!DOCTYPE html> <!-- 문서 유형 선언 -->
+<html xmlns:th="http://www.thymeleaf.org"> <!-- 타임리프 네임스페이스 선언 -->
+
+<head> <!-- 문서 헤더 시작 -->
+	<meta charset="UTF-8"> <!-- 문자 인코딩 설정 -->
+	<title>Diet Helper</title> <!-- 페이지 제목 -->
+	<style>
+		/* 최소 스타일 */
+		body {
+			font-family: Arial, sans-serif;
+		}
+
+		/* 기본 폰트 */
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding-top: 20px;
+			text-align: center;
+		}
+
+		/* 중앙 정렬 컨테이너 */
+		.form-group {
+			margin-bottom: 14px;
+			text-align: left;
+		}
+
+		/* 폼 그룹 간격 */
+		label {
+			font-weight: bold;
+			display: block;
+			margin-bottom: 6px;
+		}
+
+		/* 라벨 스타일 */
+		input[type="text"],
+		input[type="file"] {
+			width: 100%;
+			padding: 8px;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+		}
+
+		/* 입력창 */
+		button {
+			padding: 10px 16px;
+			background: #4CAF50;
+			color: #fff;
+			border: 0;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		/* 버튼 */
+		button:disabled {
+			opacity: .6;
+			cursor: not-allowed;
+		}
+
+		/* 비활성 버튼 */
+		.response {
+			margin-top: 18px;
+			padding: 14px;
+			background: #f9f9f9;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			text-align: left;
+		}
+
+		/* 응답 박스 */
+		.preview {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 12px;
+			margin-top: 12px;
+		}
+
+		/* 이미지 프리뷰 */
+		img {
+			max-width: 100%;
+			border-radius: 8px;
+			display: block;
+		}
+
+		/* 이미지 */
+		.small {
+			color: #666;
+			font-size: 12px;
+		}
+
+		/* 작은 글씨 */
+		pre.ndjson {
+			white-space: pre-wrap;
+			word-break: break-word;
+			min-height: 120px;
+			background: #fff;
+			border: 1px dashed #ccc;
+			padding: 12px;
+			border-radius: 6px;
+		}
+
+		/* 스트림 출력 영역 */
+	</style> <!-- 스타일 종료 -->
+</head> <!-- 헤더 종료 -->
+
+<body> <!-- 바디 시작 -->
+	<div class="container"> <!-- 중앙 컨테이너 -->
+		<h2>Diet Helper</h2> <!-- 페이지 타이틀 -->
+
+		<!-- 업로드 폼 -->
+		<form th:action="@{/dietHelper}" method="post" enctype="multipart/form-data"> <!-- 업로드 엔드포인트 -->
+			<div class="form-group"> <!-- 프롬프트 입력 -->
+				<label for="prompt">Diet Query:</label> <!-- 라벨 -->
+				<input id="prompt" name="prompt" type="text" placeholder="Enter your diet-related query" required
+					th:value="${prompt}"> <!-- 프롬프트 입력값 -->
+			</div> <!-- 그룹 종료 -->
+			<div class="form-group"> <!-- 파일1 업로드 -->
+				<label for="file1">Upload First Image:</label> <!-- 라벨 -->
+				<input id="file1" name="file1" type="file" accept="image/*" required> <!-- 이미지1 -->
+			</div> <!-- 그룹 종료 -->
+			<div class="form-group"> <!-- 파일2 업로드 -->
+				<label for="file2">Upload Second Image:</label> <!-- 라벨 -->
+				<input id="file2" name="file2" type="file" accept="image/*" required> <!-- 이미지2 -->
+			</div> <!-- 그룹 종료 -->
+			<button type="submit">Submit</button> <!-- 업로드 버튼 -->
+			<p class="small">Images are served from <code>/image/raw/{filename}</code> after upload.</p> <!-- 안내 -->
+		</form> <!-- 폼 종료 -->
+
+		<!-- 업로드 메시지 -->
+		<div class="response" th:if="${message}"> <!-- 메시지 영역 -->
+			<p th:text="${message}"></p> <!-- 메시지 텍스트 -->
+		</div> <!-- 메시지 종료 -->
+
+		<!-- 업로드 이미지 프리뷰 -->
+		<div class="response" th:if="${imageUrl1} or ${imageUrl2}"> <!-- 프리뷰 영역 -->
+			<h3>Uploaded Images</h3> <!-- 섹션 제목 -->
+			<div class="preview"> <!-- 그리드 -->
+				<figure th:if="${imageUrl1}"> <!-- 첫 이미지 -->
+					<img th:src="${imageUrl1}" alt="Uploaded Image 1"> <!-- 미리보기 -->
+					<figcaption class="small"><a th:href="${imageUrl1}" target="_blank" rel="noopener">Open original</a>
+					</figcaption> <!-- 링크 -->
+				</figure> <!-- figure 종료 -->
+				<figure th:if="${imageUrl2}"> <!-- 두번째 이미지 -->
+					<img th:src="${imageUrl2}" alt="Uploaded Image 2"> <!-- 미리보기 -->
+					<figcaption class="small"><a th:href="${imageUrl2}" target="_blank" rel="noopener">Open original</a>
+					</figcaption> <!-- 링크 -->
+				</figure> <!-- figure 종료 -->
+			</div> <!-- 프리뷰 종료 -->
+		</div> <!-- 응답 종료 -->
+
+		<!-- NDJSON 스트리밍 제어 -->
+		<div class="response" th:if="${fileName1} and ${fileName2}"> <!-- 스트리밍 가능 시 -->
+			<h3>Diet Helper (Stream)</h3> <!-- 섹션 제목 -->
+			<p class="small">
+				Click "Start Analysis" to stream AI suggestions via
+				<code>/dietHelper/ndjson</code>. JSON-lines와 일반 텍스트 라인 모두 처리합니다.
+			</p> <!-- 안내 -->
+			<button id="startBtn" type="button">Start Analysis</button> <!-- 시작 버튼 -->
+			<pre id="ndjsonOut" class="ndjson" aria-live="polite"></pre> <!-- 출력 영역 -->
+			<div id="ndjsonMeta" th:attr="data-f1=${fileName1},data-f2=${fileName2},data-prompt=${prompt}"></div>
+			<!-- 메타 데이터 -->
+		</div> <!-- NDJSON 종료 -->
+
+		<!-- 폴백 안내 -->
+		<div class="response" th:if="${fileName1} and ${fileName2}">
+			<p class="small">If streaming does not start, check network console for <code>application/x-ndjson</code> or
+				plain text chunks.</p> <!-- 폴백 -->
+		</div> <!-- 폴백 종료 -->
+	</div> <!-- 컨테이너 종료 -->
+
+	<script> // NDJSON/텍스트 스트리밍 스크립트
+		(function () { // IIFE 시작
+			const startBtn = document.getElementById('startBtn'); // 시작 버튼
+			const outEl = document.getElementById('ndjsonOut'); // 출력 프리
+			const metaEl = document.getElementById('ndjsonMeta'); // 메타 보관 div
+			if (!startBtn || !outEl || !metaEl) return; // 요소 검증
+
+			let ndjsonBuffer = ""; // 미완성 라인 버퍼
+			let pendingChars = []; // 화면에 아직 반영되지 않은 문자 큐
+			let rafScheduled = false; // rAF 스케줄 여부
+
+			function scheduleFlush() { // 화면 반영 스케줄링
+				if (rafScheduled) return; // 중복 방지
+				rafScheduled = true; // 스케줄 플래그
+				requestAnimationFrame(() => { // 다음 페인트 타임에 실행
+					if (pendingChars.length) { // 대기 문자가 있다면
+						outEl.textContent += pendingChars.join(''); // 한 번에 이어붙이기
+						pendingChars = []; // 큐 초기화
+						outEl.scrollTop = outEl.scrollHeight; // 자동 스크롤
+					}
+					rafScheduled = false; // 스케줄 해제
+					if (pendingChars.length) scheduleFlush(); // 남았으면 재스케줄
+				});
+			} // scheduleFlush 종료
+
+			function appendChars(str) { // 문자열을 한 글자씩 출력 큐에 적재
+				for (let i = 0; i < str.length; i++) pendingChars.push(str[i]); // 문자 단위 적재
+				scheduleFlush(); // 반영 스케줄
+			} // appendChars 종료
+
+			function handleLine(trimmed) { // 한 줄 처리(플레인/JSON 모두)
+				// JSON 가능성(간단 휴리스틱) 검사 후 파싱 시도
+				if ((trimmed.startsWith('{') && trimmed.endsWith('}')) ||
+					(trimmed.startsWith('[') && trimmed.endsWith(']'))) {
+					try {
+						const obj = JSON.parse(trimmed); // 파싱 시도
+						if (obj && typeof obj.content === 'string') {
+							appendChars(obj.content); // content 필드 출력
+							return;
+						}
+						if (obj && typeof obj.error === 'string') {
+							appendChars('[Error] ' + obj.error + '\n'); // 에러 라벨링
+							return;
+						}
+						// 알려지지 않은 JSON 구조
+						appendChars('[Info] ' + trimmed + '\n');
+						return;
+					} catch (e) {
+						// JSON 파싱 실패 시 플레인 텍스트로 취급
+					}
+				}
+				// 플레인 텍스트 라인 그대로 출력
+				appendChars(trimmed + '\n');
+			} // handleLine 종료
+
+			async function startStream() { // 스트리밍 시작
+				startBtn.disabled = true; // 버튼 비활성화
+				outEl.textContent = ''; // 출력 초기화
+				ndjsonBuffer = ''; // 버퍼 초기화
+
+				const file1 = metaEl.getAttribute('data-f1') || ''; // 파일1 이름
+				const file2 = metaEl.getAttribute('data-f2') || ''; // 파일2 이름
+				const prompt = metaEl.getAttribute('data-prompt') || ''; // 프롬프트
+
+				if (!file1 || !file2 || !prompt) { // 파라미터 검증
+					appendChars('[Error] Missing parameters: prompt/file1/file2\n'); // 오류 출력
+					startBtn.disabled = false; // 버튼 복구
+					return; // 종료
+				}
+
+				try { // 요청 시도
+					const params = new URLSearchParams(); // 폼 파라미터
+					params.append('prompt', prompt); // 프롬프트
+					params.append('file1', file1); // 파일1
+					params.append('file2', file2); // 파일2
+
+					const res = await fetch('/dietHelper/ndjson', { // NDJSON 엔드포인트
+						method: 'POST', // POST 요청
+						headers: {'Content-Type': 'application/x-www-form-urlencoded'}, // 컨텐츠 타입
+						body: params.toString() // 바디
+					}); // fetch 종료
+
+					if (!res.ok || !res.body) { // 응답 검증
+						appendChars('[Error] HTTP ' + res.status + ' ' + res.statusText + '\n'); // 상태 출력
+						startBtn.disabled = false; // 버튼 복구
+						return; // 종료
+					}
+
+					const reader = res.body.getReader(); // 스트림 리더
+					const decoder = new TextDecoder(); // 텍스트 디코더
+
+					while (true) { // 반복 읽기
+						const {done, value} = await reader.read(); // 청크 읽기
+						if (done) break; // 완료 시 종료
+						ndjsonBuffer += decoder.decode(value, {stream: true}); // 디코딩 누적
+						const parts = ndjsonBuffer.split('\n'); // 개행 분할
+						ndjsonBuffer = parts.pop() || ""; // 마지막 미완성 라인 보관
+						for (const line of parts) { // 완성 라인 처리
+							const trimmed = line.trim(); // 공백 제거
+							if (!trimmed) continue; // 빈 라인 무시
+							handleLine(trimmed); // 라인 처리
+						}
+					}
+
+					const rest = ndjsonBuffer.trim(); // 남은 버퍼
+					if (rest) handleLine(rest); // 잔여 라인 처리
+
+					appendChars('\n[Done] Stream ended.\n'); // 완료 메시지
+				} catch (e) { // 네트워크/기타 오류
+					appendChars('\n[Error] ' + (e && e.message ? e.message : 'unknown error') + '\n'); // 에러 메시지
+				} finally {
+					startBtn.disabled = false; // 버튼 활성화 복구
+				}
+			} // startStream 종료
+
+			startBtn.addEventListener('click', startStream); // 클릭 시 스트림 시작
+		})(); // IIFE 종료
+	</script> <!-- 스크립트 종료 -->
+</body> <!-- 바디 종료 -->
+
+</html> <!-- 문서 종료 -->

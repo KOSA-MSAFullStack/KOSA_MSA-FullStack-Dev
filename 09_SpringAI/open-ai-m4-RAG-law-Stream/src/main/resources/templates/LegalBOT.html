@@ -1,0 +1,98 @@
+<!DOCTYPE html> <!-- 문서 타입 선언 -->
+<html xmlns:th="http://www.thymeleaf.org"> <!-- 타임리프 네임스페이스 선언 -->
+<head> <!-- 문서 헤더 시작 -->
+  <meta charset="UTF-8"> <!-- 문자 인코딩을 UTF-8로 설정 -->
+  <title>LegalBOT</title> <!-- 페이지 제목 설정 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"/> <!-- 반응형 뷰포트 설정 -->
+
+  <style> /* 페이지 전용 간단한 스타일 정의 시작 */
+    body { font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 20px; } /* 바디 기본 스타일 */
+    .container { max-width: 800px; margin: 0 auto; } /* 중앙 정렬 컨테이너 */
+    .card { background: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); } /* 카드 스타일 */
+    .p-20 { padding: 20px; } /* 패딩 유틸리티 */
+    .mt-20 { margin-top: 20px; } /* 마진-탑 유틸리티 */
+    .mb-8 { margin-bottom: 8px; } /* 마진-바텀 유틸리티 */
+    .btn { background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; } /* 버튼 스타일 */
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; } /* 비활성 버튼 스타일 */
+    .field { width: 100%; padding: 10px; margin-top: 8px; border: 1px solid #ccc; border-radius: 4px; resize: vertical; } /* 입력 필드 스타일 */
+
+    #chatPanel { max-width: 800px; height: 380px; overflow-y: auto; margin: 20px auto; padding: 12px; background-color: #eef6ff; border: 1px solid #b3d7ff; border-radius: 8px; } /* 채팅 패널 영역 */
+    #chatPanel span { white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; } /* 채팅 말풍선 텍스트 줄바꿈 처리 */
+    #chatPanel table { border-collapse: separate; border-spacing: 8px; } /* 채팅 말풍선 간격 */
+    .title { color: #333; text-align: center; } /* 타이틀 스타일 */
+
+    .spinner { display: inline-flex; align-items: center; gap: 8px; } /* 스피너 래퍼 스타일 */
+    .d-none { display: none; } /* 숨김 유틸리티 */
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #4CAF50; animation: blink 1.2s infinite ease-in-out both; } /* 점 애니메이션 점 스타일 */
+    .dot:nth-child(2) { animation-delay: 0.2s; } /* 두 번째 점 딜레이 */
+    .dot:nth-child(3) { animation-delay: 0.4s; } /* 세 번째 점 딜레이 */
+    @keyframes blink { 0%, 80%, 100% { opacity: 0.2; } 40% { opacity: 1; } } /* 점 깜빡임 애니메이션 */
+  </style> <!-- 스타일 정의 끝 -->
+
+  <script src="/js/springai.js"></script> <!-- springai 유틸 함수 스크립트 로드(위에서 제공한 window.springai 사용) -->
+</head> <!-- 문서 헤더 끝 -->
+
+<body> <!-- 문서 바디 시작 -->
+  <div class="container"> <!-- 중앙 정렬 컨테이너 시작 -->
+    <h1 class="title">Legal BOT</h1> <!-- 페이지 제목 표시 -->
+
+    <form id="legalForm" th:action="@{/LegalBOT}" method="post" class="card p-20"> <!-- 질의 입력 폼 시작 (타임리프 액션 포함) -->
+      <label for="query" class="mb-8" style="font-weight: bold; color: #333;">Enter your query:</label> <!-- 질의 입력 레이블 -->
+      <textarea id="query" name="query" required placeholder="Type your question here" rows="4" class="field"></textarea> <!-- 질의 입력 텍스트 영역 -->
+      <div class="mt-20" style="display: flex; align-items: center; gap: 12px;"> <!-- 버튼/스피너 래퍼 -->
+        <button id="submitBtn" type="submit" class="btn">Submit</button> <!-- 제출 버튼 -->
+        <div id="spinner" class="spinner d-none" aria-live="polite" aria-busy="true" title="Streaming..."> <!-- 진행중 표시 스피너 -->
+          <div class="dot"></div> <!-- 점 1 -->
+          <div class="dot"></div> <!-- 점 2 -->
+          <div class="dot"></div> <!-- 점 3 -->
+          <span style="color:#333;">Streaming…</span> <!-- 텍스트 설명 -->
+        </div> <!-- 스피너 끝 -->
+      </div> <!-- 버튼/스피너 래퍼 끝 -->
+    </form> <!-- 질의 입력 폼 끝 -->
+
+    <div id="chatPanel" class="card mt-20"> </div> <!-- 채팅 패널(대화 내역 출력 영역) -->
+  </div> <!-- 중앙 정렬 컨테이너 끝 -->
+
+  <script> // 페이지 내 동작 스크립트 시작
+    const form = document.getElementById('legalForm'); // 폼 요소 참조
+    const submitBtn = document.getElementById('submitBtn'); // 제출 버튼 참조
+    const spinnerId = 'spinner'; // 스피너 요소 아이디 상수
+    const chatPanelId = 'chatPanel'; // 채팅 패널 요소 아이디 상수
+
+    form.addEventListener('submit', async (e) => { // 폼 제출 이벤트 핸들러 등록
+      e.preventDefault(); // 기본 제출 동작(페이지 리로드) 방지
+
+      const query = (document.getElementById('query').value || '').trim(); // 입력된 질의를 공백 제거하여 읽기
+      if (!query) { return; } // 빈 문자열이면 아무 작업도 수행하지 않고 종료
+
+      submitBtn.disabled = true; // 중복 제출 방지를 위해 버튼 비활성화
+      springai.setSpinner(spinnerId, true); // 스피너 표시 시작
+      springai.addUserQuestion(query, chatPanelId); // 사용자 질문을 채팅 패널에 추가
+      const answerTargetId = springai.addAnswerPlaceHolder(chatPanelId); // 답변 자리(placeholder)를 채팅 패널에 추가하고 대상 id 획득
+
+      try { // 네트워크/스트림 처리 예외 대비
+        const res = await fetch('/LegalBOT/stream', { // 스트리밍 엔드포인트 호출
+          method: 'POST', // HTTP 메서드: POST
+          headers: { // 요청 헤더 설정
+            'Content-Type': 'application/x-www-form-urlencoded', // 폼 URL 인코딩 방식
+            'Accept': 'application/x-ndjson' // NDJSON 스트림 수신 기대
+          }, // 헤더 설정 종료
+          body: new URLSearchParams({ query }) // 요청 본문에 질의 파라미터 직렬화
+        }); // fetch 호출 종료
+
+        if (!res.ok || !res.body) { // 응답이 정상이 아니거나 바디 스트림이 없으면
+          document.getElementById(answerTargetId).innerHTML = '스트림을 시작하지 못했습니다.'; // 에러 메시지를 답변 영역에 출력
+          return; // 함수 종료
+        } // 조건 처리 종료
+
+        await springai.printAnswerStreamText(res.body, answerTargetId, chatPanelId); // springai 유틸을 이용해 스트림 텍스트를 자연스럽게 출력
+      } catch (err) { // 네트워크/파싱 오류 발생 시
+        document.getElementById(answerTargetId).innerHTML = '오류: ' + (err?.message || err); // 오류 메시지를 답변 영역에 출력
+      } finally { // 성공/실패에 관계없이 실행되는 블록
+        springai.setSpinner(spinnerId, false); // 스피너 숨김
+        submitBtn.disabled = false; // 버튼 재활성화
+      } // finally 종료
+    }); // 폼 이벤트 핸들러 등록 종료
+  </script> <!-- 페이지 내 동작 스크립트 끝 -->
+</body> <!-- 문서 바디 끝 -->
+</html> <!-- HTML 문서 끝 -->

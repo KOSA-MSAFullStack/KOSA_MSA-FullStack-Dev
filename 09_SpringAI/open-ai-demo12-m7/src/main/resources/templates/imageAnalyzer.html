@@ -1,0 +1,117 @@
+<!DOCTYPE html> <!-- 문서 타입 선언 -->
+<html xmlns:th="http://www.thymeleaf.org"> <!-- 타임리프 네임스페이스 선언 -->
+
+<head> <!-- 문서 헤드 시작 -->
+	<meta charset="UTF-8"> <!-- 문자 인코딩 설정 -->
+	<title>Image Upload with Explanation</title> <!-- 페이지 제목 -->
+	<style>
+		/* 인라인 스타일 시작 */
+		body {
+			font-family: Arial, sans-serif;
+		}
+
+		/* 기본 폰트 지정 */
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			padding-top: 20px;
+		}
+
+		/* 컨테이너 스타일 */
+		.form-group {
+			margin-bottom: 15px;
+		}
+
+		/* 폼 그룹 간격 */
+		label {
+			font-weight: bold;
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		/* 라벨 스타일 */
+		input[type="file"],
+		input[type="text"] {
+			width: 100%;
+			padding: 8px;
+			border-radius: 4px;
+			border: 1px solid #ddd;
+		}
+
+		/* 입력 필드 스타일 */
+		button {
+			padding: 10px 15px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			color: #fff;
+			background: #4CAF50;
+		}
+
+		/* 버튼 스타일 */
+		.response {
+			margin-top: 20px;
+			padding: 15px;
+			background: #f9f9f9;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+		}
+
+		/* 응답 영역 스타일 */
+		img {
+			max-width: 100%;
+			border-radius: 8px;
+			margin-top: 10px;
+		}
+
+		/* 이미지 표시 스타일 */
+		.preview {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 10px;
+		}
+
+		/* 프리뷰 레이아웃 */
+	</style> <!-- 인라인 스타일 종료 -->
+</head> <!-- 문서 헤드 종료 -->
+
+<body> <!-- 문서 바디 시작 -->
+	<div class="container"> <!-- 중앙 정렬 컨테이너 -->
+		<h2>Upload an Image with Explanation Prompt</h2> <!-- 페이지 헤더 -->
+
+		<!-- 이미지 업로드 폼 시작 -->
+		<form th:action="@{/imageAnalyzer}" method="post" enctype="multipart/form-data"> <!-- 업로드 처리 엔드포인트와 멀티파트 설정 -->
+			<div class="form-group"> <!-- 프롬프트 입력 그룹 -->
+				<label for="prompt">Enter Explanation Prompt:</label> <!-- 프롬프트 라벨 -->
+				<input type="text" id="prompt" name="prompt"
+					placeholder="Describe what you want to know about the image" required> <!-- 프롬프트 입력 -->
+			</div> <!-- 프롬프트 입력 그룹 종료 -->
+			<div class="form-group"> <!-- 파일 선택 입력 그룹 -->
+				<label for="file">Select Image:</label> <!-- 파일 입력 라벨 -->
+				<input type="file" id="file" name="file" accept="image/*" required> <!-- 이미지 파일 입력 -->
+			</div> <!-- 파일 선택 입력 그룹 종료 -->
+			<button type="submit">Submit</button> <!-- 제출 버튼 -->
+		</form> <!-- 이미지 업로드 폼 종료 -->
+
+		<!-- 에러 또는 일반 메시지 표시 영역 -->
+		<div class="response" th:if="${message}"> <!-- 메시지가 있을 때만 표시 -->
+			<p th:text="${message}"></p> <!-- 메시지 바인딩 -->
+		</div> <!-- 메시지 표시 영역 종료 -->
+
+		<!-- 업로드된 이미지 미리보기: 컨트롤러가 직접 스트리밍하는 URL로 표시 -->
+		<div class="response preview" th:if="${filename}"> <!-- 파일명이 모델에 있을 때만 표시 -->
+			<div> <!-- 업로드 이미지 박스 -->
+				<h3>Uploaded Image (direct streaming):</h3> <!-- 섹션 헤더 -->
+				<img th:src="@{'/image/raw/' + ${filename}}" alt="Uploaded Image"> <!-- 컨트롤러 스트리밍 URL로 이미지 표시 -->
+			</div> <!-- 업로드 이미지 박스 종료 -->
+		</div> <!-- 업로드된 이미지 프리뷰 영역 종료 -->
+
+		<!-- 이미지 설명 결과 표시 영역 -->
+		<div class="response" th:if="${explanation}"> <!-- 설명 텍스트가 있을 때만 표시 -->
+			<h3>Image Explanation:</h3> <!-- 설명 섹션 헤더 -->
+			<p th:text="${explanation}"></p> <!-- 설명 결과 바인딩 -->
+		</div> <!-- 이미지 설명 결과 표시 영역 종료 -->
+	</div> <!-- 컨테이너 종료 -->
+</body> <!-- 문서 바디 종료 -->
+
+</html> <!-- 문서 종료 -->
