@@ -4,3 +4,6 @@
 [submodule "07_2ndProject/2ndProject_Magnifier"]
 	path = 07_2ndProject/2ndProject_Magnifier
 	url = https://github.com/KOSA-MSAFullStack/2ndProject_Magnifier.git
+[submodule "13_Conference_Project/Smart_TrafficLight"]
+	path = 13_Conference_Project/Smart_TrafficLight
+	url = https://github.com/KOSA-MSAFullStack/Smart-TrafficLight.git
