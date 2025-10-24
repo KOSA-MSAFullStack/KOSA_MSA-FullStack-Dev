@@ -4,6 +4,25 @@
 .Ref/
 .geminiRef/
 GEMINI.md
+14_DevMethod/개발 방법론 자료집
+
+# ========================================
+# key
+# ========================================
+04_JavaWeb/250731_JavaWeb/jQuery_Ajax_open_api_JSON/Google_Map/구글_지도_api키.txt
+05_SpringFramework/250813_aws-s3-upload/src/main/resources/aws.properties
+06_SpringBoot\250822_SpringBoot\club-7-4_24_3_16\club\src\main\resources\application-oauth.properties
+application-secure.properties
+
+# ========================================
+# 팀프로젝트 결과물 폴더 제외
+# ========================================
+03_1stProject/결과물/
+07_2ndProject/결과물/
+10_3rdProject/결과물/
+13_Conference_Project/결과물/
+
+
 
 # ========================================
 # 공통 무시 항목 (OS, 편집기 등)
@@ -70,26 +89,3 @@ build/
 
 # Maven Wrapper
 !.mvn/wrapper/maven-wrapper.jar
-
-# ========================================
-# Gemini 참고 폴더 제외
-# ========================================
-.Ref/
-
-
-# ========================================
-# key
-# ========================================
-04_JavaWeb/250731_JavaWeb/jQuery_Ajax_open_api_JSON/Google_Map/구글_지도_api키.txt
-05_SpringFramework/250813_aws-s3-upload/src/main/resources/aws.properties
-06_SpringBoot\250822_SpringBoot\club-7-4_24_3_16\club\src\main\resources\application-oauth.properties
-application-secure.properties
-
-
-# ========================================
-# 팀프로젝트 결과물 폴더 제외
-# ========================================
-03_1stProject/결과물/
-07_2ndProject/결과물/
-10_3rdProject/결과물/
-13_Conference_Project/결과물/
