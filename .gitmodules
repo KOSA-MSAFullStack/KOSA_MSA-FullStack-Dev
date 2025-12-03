@@ -7,6 +7,9 @@
 [submodule "10_3rdProject/3rdProject_CodeGenie"]
 	path = 10_3rdProject/3rdProject_CodeGenie
 	url = https://github.com/KOSA-MSAFullStack/3rdProject_CodeGenie.git
+[submodule "12_FinalProject/FinalProject_WeatherFit"]
+	path = 12_FinalProject/FinalProject_WeatherFit
+	url = https://github.com/KOSA-MSAFullStack/FinalProject_WeatherFit.git
 [submodule "13_Conference_Project/Smart_TrafficLight"]
 	path = 13_Conference_Project/Smart_TrafficLight
 	url = https://github.com/KOSA-MSAFullStack/Smart-TrafficLight.git
